@@ -1,0 +1,57 @@
+<view class="page">
+  <view class="profileCard">
+    <view class="profileRow">
+      <image class="avatar" src="{{avatar}}" mode="aspectFill" />
+      <view class="profileInfo">
+        <text class="name">衣橱主人</text>
+        <view class="levelBadge">
+          <text class="levelText">✨ Lv.3 穿搭魔法师</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="statsRow">
+      <block wx:for="{{stats}}" wx:key="label">
+        <view class="statDivider" wx:if="{{index > 0}}"></view>
+        <view class="statItem">
+          <text class="statValue">{{item.value}}</text>
+          <text class="statLabel">{{item.label}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <view class="menuCard">
+    <view
+      class="menuItem {{index === menuList.length - 1 ? 'menuItemLast' : ''}}"
+      wx:for="{{menuList}}"
+      wx:key="key"
+      data-key="{{item.key}}"
+      bindtap="handleMenu"
+    >
+      <view class="menuEmojiWrap">
+        <text class="menuEmoji">{{item.emoji}}</text>
+      </view>
+      <view class="menuTextWrap">
+        <text class="menuLabel">{{item.label}}</text>
+        <text class="menuDesc">{{item.desc}}</text>
+      </view>
+      <text class="menuArrow">›</text>
+    </view>
+  </view>
+
+  <view class="menuCard">
+    <view class="menuItem" bindtap="handleAbout">
+      <view class="menuEmojiWrap">
+        <text class="menuEmoji">📍</text>
+      </view>
+      <view class="menuTextWrap">
+        <text class="menuLabel">关于我的衣服在哪</text>
+        <text class="menuDesc">版本 v1.0.0</text>
+      </view>
+      <text class="menuArrow">›</text>
+    </view>
+  </view>
+
+  <text class="footer">愿你的每一天，都被魔法点亮 ✨</text>
+</view>

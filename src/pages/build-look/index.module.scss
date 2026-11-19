@@ -1,0 +1,263 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  padding: $spacing-lg $page-padding 240rpx;
+  background: $color-bg-page;
+}
+
+.title {
+  display: block;
+  font-size: 44rpx;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  line-height: $line-height-tight;
+}
+
+.subtitle {
+  display: block;
+  margin-top: $spacing-xs;
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.boardCard {
+  margin-top: $spacing-md;
+  padding: $spacing-lg;
+  background: $color-bg-card;
+  border-radius: $radius-xl;
+  box-shadow: $shadow-card;
+}
+
+.boardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.boardTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.boardCount {
+  font-size: $font-size-sm;
+  color: $color-primary;
+}
+
+.slots {
+  display: flex;
+  margin-top: $spacing-lg;
+}
+
+.slot {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: $spacing-sm;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.slotBox {
+  width: 100%;
+  height: 150rpx;
+  border-radius: $radius-md;
+  background: $color-bg-page;
+  border: 2rpx dashed $color-border;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: all $transition-fast;
+
+  &:active {
+    opacity: 0.85;
+  }
+}
+
+.slotBoxFilled {
+  border-color: transparent;
+  background: $color-bg-hover;
+}
+
+.slotImage {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.slotEmoji {
+  font-size: 36rpx;
+  opacity: 0.55;
+}
+
+.slotLabel {
+  margin-top: $spacing-xs;
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  white-space: nowrap;
+}
+
+.slotLabelActive {
+  color: $color-primary;
+  font-weight: $font-weight-semibold;
+}
+
+.nameInput {
+  width: 100%;
+  height: 80rpx;
+  margin-top: $spacing-lg;
+  padding: 0 $spacing-md;
+  background: $color-bg-page;
+  border-radius: $radius-md;
+  font-size: $font-size-sm;
+  color: $color-text-primary;
+  box-sizing: border-box;
+}
+
+.placeholder {
+  color: $color-text-tertiary;
+  font-size: $font-size-sm;
+}
+
+.slotTabs {
+  margin-top: $spacing-md;
+  @include scroll-x-container;
+}
+
+.slotTab {
+  @include scroll-x-item(150rpx);
+  height: 64rpx;
+  line-height: 64rpx;
+  margin-right: $spacing-sm;
+  text-align: center;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  background: $color-bg-card;
+  border-radius: $radius-button;
+  white-space: nowrap;
+  transition: all $transition-fast;
+
+  &:active {
+    opacity: 0.85;
+  }
+}
+
+.slotTabActive {
+  color: $color-text-white;
+  font-weight: $font-weight-medium;
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+}
+
+.picker {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: $spacing-md;
+}
+
+.pickerItem {
+  position: relative;
+  width: calc(33.33% - 10rpx);
+  margin-bottom: $spacing-sm;
+  background: $color-bg-card;
+  border-radius: $radius-md;
+  overflow: hidden;
+  border: 3rpx solid transparent;
+  box-shadow: $shadow-card;
+  transition: all $transition-fast;
+
+  &:active {
+    opacity: 0.9;
+  }
+}
+
+.pickerItemActive {
+  border-color: $color-primary;
+}
+
+.pickerImage {
+  width: 100%;
+  height: 190rpx;
+  display: block;
+  background: $color-bg-hover;
+}
+
+.pickerName {
+  display: block;
+  padding: 10rpx 12rpx;
+  font-size: $font-size-xs;
+  color: $color-text-primary;
+  @include text-ellipsis;
+}
+
+.checkBadge {
+  position: absolute;
+  top: $spacing-xs;
+  right: $spacing-xs;
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: $radius-round;
+  background: $color-primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkText {
+  font-size: $font-size-xs;
+  color: $color-text-white;
+  line-height: 1;
+}
+
+.empty {
+  padding: 80rpx 0;
+  text-align: center;
+}
+
+.emptyText {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.saveBar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: $spacing-sm $page-padding calc(#{$spacing-sm} + env(safe-area-inset-bottom));
+  background: $color-bg-card;
+  box-shadow: 0 -4rpx 16rpx rgba(43, 36, 64, 0.06);
+  z-index: 20;
+}
+
+.saveBtn {
+  height: $button-height-lg;
+  border-radius: $radius-button;
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all $transition-base;
+
+  &:active {
+    opacity: 0.9;
+    transform: scale(0.99);
+  }
+}
+
+.saveBtnDisabled {
+  opacity: 0.45;
+}
+
+.saveText {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-white;
+  white-space: nowrap;
+}

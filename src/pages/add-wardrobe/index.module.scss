@@ -1,0 +1,192 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  padding: $spacing-md $page-padding 200rpx;
+  background: $color-bg-page;
+}
+
+.block {
+  padding: $spacing-lg;
+  margin-bottom: $spacing-md;
+  background: $color-bg-card;
+  border-radius: $radius-xl;
+  box-shadow: $shadow-card;
+}
+
+.fieldLabel {
+  display: block;
+  margin-bottom: $spacing-sm;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.imagePicker {
+  width: 100%;
+  height: 340rpx;
+  border-radius: $radius-lg;
+  background: $color-bg-page;
+  border: 2rpx dashed $color-border;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imagePreview {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.imageEmpty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.imageEmptyIcon {
+  font-size: 64rpx;
+  line-height: 1;
+}
+
+.imageEmptyText {
+  margin-top: $spacing-sm;
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.photoActions {
+  display: flex;
+  margin-top: $spacing-md;
+}
+
+.photoBtn {
+  flex: 1;
+  height: $button-height-md;
+  margin-right: $spacing-sm;
+  border-radius: $radius-button;
+  background: $color-bg-tag;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all $transition-base;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &:active {
+    opacity: 0.85;
+    transform: scale(0.98);
+  }
+}
+
+.photoBtnText {
+  font-size: $font-size-sm;
+  color: $color-primary;
+  font-weight: $font-weight-medium;
+  white-space: nowrap;
+}
+
+.input {
+  width: 100%;
+  height: 88rpx;
+  padding: 0 $spacing-md;
+  background: $color-bg-page;
+  border-radius: $radius-md;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  box-sizing: border-box;
+}
+
+.placeholder {
+  color: $color-text-tertiary;
+  font-size: $font-size-sm;
+}
+
+.shareRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.shareInfo {
+  flex: 1;
+  min-width: 0;
+  padding-right: $spacing-md;
+}
+
+.shareTitle {
+  display: block;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.shareDesc {
+  display: block;
+  margin-top: 4rpx;
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  line-height: $line-height-normal;
+}
+
+.switchTrack {
+  flex-shrink: 0;
+  width: 84rpx;
+  height: 46rpx;
+  padding: 3rpx;
+  border-radius: $radius-round;
+  background: $color-border;
+  display: flex;
+  align-items: center;
+  transition: all $transition-base;
+}
+
+.switchOn {
+  background: $color-primary;
+  justify-content: flex-end;
+}
+
+.switchDot {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: $radius-round;
+  background: $color-bg-card;
+  box-shadow: 0 2rpx 6rpx rgba(43, 36, 64, 0.2);
+}
+
+.saveBar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: $spacing-sm $page-padding calc(#{$spacing-sm} + env(safe-area-inset-bottom));
+  background: $color-bg-card;
+  box-shadow: 0 -4rpx 16rpx rgba(43, 36, 64, 0.06);
+  z-index: 20;
+}
+
+.saveBtn {
+  height: $button-height-lg;
+  border-radius: $radius-button;
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all $transition-base;
+
+  &:active {
+    opacity: 0.9;
+    transform: scale(0.99);
+  }
+}
+
+.saveText {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-white;
+  white-space: nowrap;
+}

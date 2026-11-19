@@ -1,0 +1,16 @@
+<view class="card {{variant === 'grid' ? 'grid-card' : ''}}" bindtap="handleTap">
+  <view class="cover-wrap">
+    <image class="cover" src="{{outfit.cover}}" mode="aspectFill" binderror="handleImageError" />
+    <view class="mask"></view>
+    <view class="cover-bottom">
+      <text class="scene">{{sceneText}}</text>
+      <text class="likes">♥ {{outfit.likes}}</text>
+    </view>
+  </view>
+  <view class="info">
+    <text class="title">{{outfit.title}}</text>
+    <view class="tags">
+      <text class="tag" wx:for="{{outfit.tags}}" wx:key="*this">#{{item}}</text>
+    </view>
+  </view>
+</view>

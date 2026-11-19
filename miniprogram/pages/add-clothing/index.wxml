@@ -1,0 +1,118 @@
+<view class="page">
+  <view class="block">
+    <text class="fieldLabel">单品照片</text>
+    <view class="imagePicker">
+      <image class="imagePreview" wx:if="{{image}}" src="{{image}}" mode="aspectFill" />
+      <view class="imageEmpty" wx:else>
+        <text class="imageEmptyIcon">📷</text>
+        <text class="imageEmptyText">拍下你的单品</text>
+        <text class="imageEmptyHint">直接调用相机拍摄衣物，会更清晰</text>
+      </view>
+    </view>
+    <view class="photoActions">
+      <view class="photoBtn" data-source="camera" bindtap="chooseImage">
+        <text class="photoBtnText">📷 拍照</text>
+      </view>
+      <view class="photoBtn" data-source="album" bindtap="chooseImage">
+        <text class="photoBtnText">🖼 从相册选择</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="block">
+    <text class="fieldLabel">单品名称</text>
+    <input
+      class="input"
+      value="{{name}}"
+      maxlength="20"
+      placeholder="例如：云朵针织开衫"
+      placeholder-class="placeholder"
+      bindinput="handleNameInput"
+    />
+  </view>
+
+  <view class="block">
+    <text class="fieldLabel">收纳到哪个衣橱</text>
+    <view class="cabinetRow">
+      <view
+        class="cabinetChip {{wardrobeId === item.id ? 'cabinetChipActive' : ''}}"
+        wx:for="{{wardrobes}}"
+        wx:key="id"
+        data-id="{{item.id}}"
+        bindtap="selectCabinet"
+      >{{item.name}}</view>
+    </view>
+  </view>
+
+  <view class="block">
+    <text class="fieldLabel">分类</text>
+    <view class="categoryGrid">
+      <view
+        class="categoryChip {{category === item.key ? 'categoryChipActive' : ''}}"
+        wx:for="{{categories}}"
+        wx:key="key"
+        data-key="{{item.key}}"
+        bindtap="selectCategory"
+      >{{item.label}}</view>
+    </view>
+  </view>
+
+  <view class="block">
+    <text class="fieldLabel">颜色</text>
+    <view class="colorRow">
+      <view
+        class="colorItem {{colorIndex === index ? 'colorItemActive' : ''}}"
+        wx:for="{{colorOptions}}"
+        wx:key="name"
+        data-index="{{index}}"
+        bindtap="selectColor"
+      >
+        <view class="colorDot" style="background-color: {{item.hex}}"></view>
+      </view>
+    </view>
+    <text class="colorName">已选：{{colorName}}</text>
+  </view>
+
+  <view class="block">
+    <text class="fieldLabel">适合季节</text>
+    <view class="seasonRow">
+      <view
+        class="seasonChip {{item.active ? 'seasonChipActive' : ''}}"
+        wx:for="{{seasonOptions}}"
+        wx:key="name"
+        data-season="{{item.name}}"
+        bindtap="toggleSeason"
+      >{{item.name}}</view>
+    </view>
+  </view>
+
+  <view class="block">
+    <text class="fieldLabel">品牌（选填）</text>
+    <input
+      class="input"
+      value="{{brand}}"
+      maxlength="20"
+      placeholder="记录品牌，便于搭配参考"
+      placeholder-class="placeholder"
+      bindinput="handleBrandInput"
+    />
+  </view>
+
+  <view class="block">
+    <text class="fieldLabel">搭配备注（选填）</text>
+    <textarea
+      class="textarea"
+      value="{{note}}"
+      maxlength="60"
+      placeholder="例如：适合搭配牛仔裤，春秋常穿"
+      placeholder-class="placeholder"
+      bindinput="handleNoteInput"
+    />
+  </view>
+
+  <view class="saveBar">
+    <view class="saveBtn {{!canSave ? 'saveBtnDisabled' : ''}}" bindtap="handleSave">
+      <text class="saveText">{{isEditing ? '保存修改' : '加入我的衣橱'}}</text>
+    </view>
+  </view>
+</view>

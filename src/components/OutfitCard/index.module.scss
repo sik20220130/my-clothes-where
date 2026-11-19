@@ -1,0 +1,93 @@
+@use '@/styles/variables.scss' as *;
+
+.card {
+  width: 100%;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-card;
+  transition: all $transition-base;
+
+  &:active {
+    opacity: 0.92;
+    transform: scale(0.99);
+  }
+}
+
+.coverWrap {
+  position: relative;
+  width: 100%;
+  height: 320rpx;
+  background: $color-bg-hover;
+}
+
+.gridCard .coverWrap {
+  height: 240rpx;
+}
+
+.cover {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.mask {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 120rpx;
+  background: linear-gradient(180deg, rgba(43, 36, 64, 0) 0%, rgba(43, 36, 64, 0.55) 100%);
+}
+
+.coverBottom {
+  position: absolute;
+  left: $spacing-md;
+  right: $spacing-md;
+  bottom: $spacing-sm;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.scene {
+  font-size: $font-size-xs;
+  color: $color-text-white;
+  background: rgba(123, 91, 214, 0.75);
+  padding: 4rpx 14rpx;
+  border-radius: $radius-round;
+}
+
+.likes {
+  font-size: $font-size-xs;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.info {
+  padding: $spacing-md;
+}
+
+.title {
+  display: block;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  @include text-ellipsis;
+}
+
+.gridCard .title {
+  font-size: $font-size-sm;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: $spacing-xs;
+}
+
+.tag {
+  font-size: $font-size-xs;
+  color: $color-primary;
+  margin-right: $spacing-sm;
+  white-space: nowrap;
+}

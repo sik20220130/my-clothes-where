@@ -1,0 +1,226 @@
+.page {
+  min-height: 100vh;
+  padding: 32rpx 32rpx 48rpx;
+  background: #f7f4fc;
+}
+
+.hero {
+  padding: 32rpx;
+  border-radius: 20rpx;
+  background: linear-gradient(135deg, #7b5bd6 0%, #a189ec 55%, #ffa9be 100%);
+  box-shadow: 0 8rpx 24rpx rgba(123, 91, 214, 0.28);
+}
+
+.heroTitle {
+  display: block;
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.heroDesc {
+  display: block;
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.codeRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 32rpx;
+  padding: 24rpx;
+  border-radius: 16rpx;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.codeLabel {
+  display: block;
+  font-size: 22rpx;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.codeValue {
+  display: block;
+  margin-top: 4rpx;
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 4rpx;
+}
+
+.copyBtn {
+  height: 56rpx;
+  padding: 0 24rpx;
+  border-radius: 48rpx;
+  background: rgba(255, 255, 255, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.copyBtn:active {
+  opacity: 0.85;
+}
+
+.copyText {
+  font-size: 22rpx;
+  font-weight: 600;
+  color: #7b5bd6;
+  white-space: nowrap;
+}
+
+.section {
+  margin-top: 48rpx;
+}
+
+.membersCard {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 24rpx 8rpx;
+  background: #ffffff;
+  border-radius: 20rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.08);
+}
+
+.member {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8rpx 0;
+}
+
+.memberAvatar {
+  width: 92rpx;
+  height: 92rpx;
+  border-radius: 999rpx;
+  background: #f3eefb;
+}
+
+.memberName {
+  margin-top: 8rpx;
+  font-size: 22rpx;
+  color: #2b2440;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.memberRole {
+  margin-top: 2rpx;
+  font-size: 20rpx;
+  color: #9c95b0;
+  white-space: nowrap;
+}
+
+.cabinetCard {
+  display: flex;
+  align-items: center;
+  padding: 24rpx;
+  margin-bottom: 16rpx;
+  background: #ffffff;
+  border-radius: 16rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.08);
+}
+
+.cabinetCover {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 12rpx;
+  background: #f3eefb;
+  flex-shrink: 0;
+}
+
+.cabinetInfo {
+  flex: 1;
+  margin-left: 24rpx;
+  min-width: 0;
+}
+
+.cabinetName {
+  display: block;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #2b2440;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cabinetMeta {
+  display: block;
+  margin-top: 4rpx;
+  font-size: 22rpx;
+  color: #9c95b0;
+}
+
+.switchTrack {
+  flex-shrink: 0;
+  width: 84rpx;
+  height: 46rpx;
+  padding: 3rpx;
+  border-radius: 999rpx;
+  background: #ede8f7;
+  display: flex;
+  align-items: center;
+  transition: all 0.25s ease;
+}
+
+.switchOn {
+  background: #7b5bd6;
+  justify-content: flex-end;
+}
+
+.switchDot {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 999rpx;
+  background: #ffffff;
+  box-shadow: 0 2rpx 6rpx rgba(43, 36, 64, 0.2);
+}
+
+.noteCard {
+  margin-top: 24rpx;
+  padding: 32rpx;
+  background: #f3eefb;
+  border-radius: 16rpx;
+}
+
+.noteTitle {
+  display: block;
+  font-size: 24rpx;
+  font-weight: 600;
+  color: #7b5bd6;
+}
+
+.noteText {
+  display: block;
+  margin-top: 8rpx;
+  font-size: 22rpx;
+  color: #6b6480;
+  line-height: 1.8;
+}
+
+.inviteBtn {
+  height: 96rpx;
+  margin-top: 32rpx;
+  border-radius: 48rpx;
+  background: linear-gradient(135deg, #7b5bd6 0%, #a189ec 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+}
+.inviteBtn:active {
+  opacity: 0.9;
+  transform: scale(0.99);
+}
+
+.inviteText {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #ffffff;
+  white-space: nowrap;
+}

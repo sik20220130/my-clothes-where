@@ -1,0 +1,84 @@
+@use '@/styles/variables.scss' as *;
+
+.card {
+  width: 100%;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-card;
+  transition: all $transition-base;
+
+  &:active {
+    opacity: 0.92;
+    transform: scale(0.99);
+  }
+}
+
+.imageWrap {
+  position: relative;
+  width: 100%;
+  height: 300rpx;
+  background: $color-bg-hover;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.badge {
+  position: absolute;
+  top: $spacing-sm;
+  left: $spacing-sm;
+  padding: 4rpx 14rpx;
+  border-radius: $radius-round;
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.badgeText {
+  font-size: $font-size-xs;
+  color: $color-primary;
+  font-weight: $font-weight-medium;
+}
+
+.info {
+  padding: $spacing-md;
+}
+
+.name {
+  display: block;
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  @include text-ellipsis;
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  margin-top: $spacing-xs;
+}
+
+.colorDot {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: $radius-round;
+  border: 1rpx solid $color-border;
+  flex-shrink: 0;
+}
+
+.colorName {
+  margin-left: $spacing-xs;
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  @include text-ellipsis;
+}
+
+.wearCount {
+  margin-left: auto;
+  padding-left: $spacing-sm;
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  white-space: nowrap;
+}

@@ -1,0 +1,70 @@
+<view class="page">
+  <text class="title">搭配工坊</text>
+  <text class="subtitle">从上装、下装、外套、饰品中挑选单品，组合今日造型</text>
+
+  <view class="boardCard">
+    <view class="boardHeader">
+      <text class="boardTitle">搭配画板</text>
+      <text class="boardCount">已选 {{selectedCount}} 件</text>
+    </view>
+
+    <view class="slots">
+      <view class="slot" wx:for="{{boardSlots}}" wx:key="key">
+        <view
+          class="slotBox {{item.image ? 'slotBoxFilled' : ''}}"
+          data-key="{{item.key}}"
+          bindtap="handleSlotTap"
+        >
+          <image class="slotImage" wx:if="{{item.image}}" src="{{item.image}}" mode="aspectFill" />
+          <text class="slotEmoji" wx:else>{{item.emoji}}</text>
+        </view>
+        <text class="slotLabel {{activeSlot === item.key ? 'slotLabelActive' : ''}}">{{item.label}}</text>
+      </view>
+    </view>
+
+    <input
+      class="nameInput"
+      value="{{lookName}}"
+      maxlength="16"
+      placeholder="给这套搭配起个名字（选填）"
+      placeholder-class="placeholder"
+      bindinput="handleNameInput"
+    />
+  </view>
+
+  <scroll-view class="slotTabs" scroll-x>
+    <view
+      class="slotTab {{activeSlot === item.key ? 'slotTabActive' : ''}}"
+      wx:for="{{slots}}"
+      wx:key="key"
+      data-key="{{item.key}}"
+      bindtap="selectSlotTab"
+    >{{item.emoji}} {{item.label}}</view>
+  </scroll-view>
+
+  <view class="picker" wx:if="{{pickerItems.length > 0}}">
+    <view
+      class="pickerItem {{item.active ? 'pickerItemActive' : ''}}"
+      wx:for="{{pickerItems}}"
+      wx:key="id"
+      data-id="{{item.id}}"
+      bindtap="handlePickerSelect"
+    >
+      <image class="pickerImage" src="{{item.image}}" mode="aspectFill" />
+      <text class="pickerName">{{item.name}}</text>
+      <view class="checkBadge" wx:if="{{item.active}}">
+        <text class="checkText">✓</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty" wx:else>
+    <text class="emptyText">这个分类还没有单品，去衣橱添加吧</text>
+  </view>
+
+  <view class="saveBar">
+    <view class="saveBtn {{saveDisabled ? 'saveBtnDisabled' : ''}}" bindtap="handleSave">
+      <text class="saveText">保存这套搭配</text>
+    </view>
+  </view>
+</view>

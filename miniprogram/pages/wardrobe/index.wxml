@@ -1,0 +1,99 @@
+<view class="page">
+  <view class="header">
+    <view class="titleRow">
+      <view>
+        <text class="title">我的衣橱</text>
+        <text class="subtitle">共 {{items.length}} 件单品 · {{wardrobes.length}} 个衣橱 · 本月新增 {{monthly}} 件</text>
+      </view>
+      <view class="manage" bindtap="goManage">
+        <text class="manageText">衣橱管理</text>
+      </view>
+    </view>
+
+    <scroll-view class="cabinetScroll" scroll-x>
+      <view
+        class="cabinetCard allCard {{activeCabinet === 'all' ? 'cabinetCardActive' : ''}}"
+        data-id="all"
+        bindtap="selectCabinet"
+      >
+        <view class="allContent">
+          <text class="allTitle">全部衣橱</text>
+          <text class="allSub">{{items.length}} 件单品</text>
+        </view>
+      </view>
+      <view
+        class="cabinetCard {{activeCabinet === item.id ? 'cabinetCardActive' : ''}}"
+        wx:for="{{wardrobes}}"
+        wx:key="id"
+        data-id="{{item.id}}"
+        bindtap="selectCabinet"
+      >
+        <image class="cabinetCover" src="{{item.cover}}" mode="aspectFill" />
+        <view class="cabinetMask"></view>
+        <view class="cabinetContent">
+          <text class="cabinetTitle">{{item.name}}</text>
+          <text class="cabinetSub">{{item.count}} 件</text>
+        </view>
+      </view>
+    </scroll-view>
+
+    <view class="searchWrap">
+      <view class="searchIcon"></view>
+      <input
+        class="searchInput"
+        value="{{keyword}}"
+        placeholder="搜索单品名称 / 颜色 / 品牌"
+        placeholder-class="searchPlaceholder"
+        confirm-type="search"
+        bindinput="handleSearch"
+      />
+    </view>
+
+    <scroll-view class="chips" scroll-x>
+      <view
+        class="chip {{activeCategory === item.key ? 'chipActive' : ''}}"
+        wx:for="{{categoryList}}"
+        wx:key="key"
+        data-key="{{item.key}}"
+        bindtap="selectCategory"
+      >{{item.label}}</view>
+    </scroll-view>
+  </view>
+
+  <view class="summary">
+    <text class="summaryText">{{filtered.length}} 件单品</text>
+    <text class="clearText" wx:if="{{hasFilter}}" bindtap="resetFilter">清除筛选</text>
+  </view>
+
+  <view class="grid" wx:if="{{filtered.length > 0}}">
+    <view class="gridItem" wx:for="{{filtered}}" wx:key="id">
+      <clothing-card
+        item="{{item}}"
+        bind:select="goDetail"
+        bind:favorite="handleFavorite"
+      />
+    </view>
+  </view>
+
+  <empty-state
+    wx:elif="{{items.length === 0}}"
+    emoji="🪄"
+    title="衣橱还空着"
+    description="拍下你的第一件单品，开始施展收纳魔法"
+    action-text="添加第一件单品"
+    bind:action="goAdd"
+  />
+
+  <empty-state
+    wx:else
+    emoji="🔎"
+    title="没有找到相关单品"
+    description="试试更换关键词、品类或衣橱筛选"
+    action-text="清除筛选"
+    bind:action="resetFilter"
+  />
+
+  <view class="fab" bindtap="goAdd">
+    <text class="fabText">+</text>
+  </view>
+</view>

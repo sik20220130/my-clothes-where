@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "搭配灵感",
+  "usingComponents": {
+    "outfit-card": "/components/outfit-card/index"
+  }
+}

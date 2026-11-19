@@ -1,0 +1,27 @@
+page {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+  font-size: 28rpx;
+  line-height: 1.5;
+  color: #2b2440;
+  background-color: #f7f4fc;
+}
+
+page,
+view,
+scroll-view,
+swiper,
+swiper-item,
+text,
+image,
+button,
+input,
+textarea,
+form,
+label,
+navigator {
+  box-sizing: border-box;
+}
+
+image {
+  display: block;
+}

@@ -1,0 +1,282 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  padding: $spacing-lg $page-padding $spacing-xl;
+  background: $color-bg-page;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 44rpx;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  line-height: $line-height-tight;
+}
+
+.subtitle {
+  margin-top: $spacing-xs;
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.magicBanner {
+  display: flex;
+  align-items: center;
+  margin-top: $spacing-md;
+  padding: $spacing-lg;
+  border-radius: $radius-xl;
+  background: linear-gradient(135deg, #7b5bd6 0%, #a189ec 60%, #ffa9be 100%);
+  box-shadow: 0 8rpx 24rpx rgba(123, 91, 214, 0.28);
+}
+
+.looksSection {
+  margin-top: $spacing-md;
+}
+
+.looksHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-sm;
+}
+
+.looksTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.looksMore {
+  font-size: $font-size-sm;
+  color: $color-primary;
+}
+
+.lookScroll {
+  @include scroll-x-container;
+}
+
+.createCard {
+  @include scroll-x-item(220rpx);
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 210rpx;
+  margin-right: $spacing-sm;
+  border-radius: $radius-lg;
+  border: 2rpx dashed $color-primary;
+  background: $color-bg-card;
+  transition: all $transition-fast;
+
+  &:active {
+    opacity: 0.85;
+  }
+}
+
+.createIcon {
+  font-size: 44rpx;
+  color: $color-primary;
+  line-height: 1;
+}
+
+.createText {
+  margin-top: $spacing-xs;
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.lookCard {
+  @include scroll-x-item(320rpx);
+  margin-right: $spacing-sm;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-card;
+}
+
+.lookImages {
+  display: flex;
+  height: 150rpx;
+  background: $color-bg-hover;
+}
+
+.lookImage {
+  width: 33.33%;
+  height: 100%;
+  display: block;
+}
+
+.lookFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10rpx 16rpx;
+}
+
+.lookName {
+  flex: 1;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  @include text-ellipsis;
+}
+
+.lookDelete {
+  flex-shrink: 0;
+  margin-left: $spacing-sm;
+  font-size: $font-size-xs;
+  color: $color-error;
+}
+
+.magicBannerText {
+  flex: 1;
+  min-width: 0;
+}
+
+.magicTitle {
+  display: block;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-text-white;
+}
+
+.magicDesc {
+  display: block;
+  margin-top: 6rpx;
+  font-size: $font-size-xs;
+  color: rgba(255, 255, 255, 0.85);
+  @include text-ellipsis;
+}
+
+.magicBtn {
+  flex-shrink: 0;
+  height: $button-height-sm;
+  padding: 0 $spacing-lg;
+  margin-left: $spacing-md;
+  border-radius: $radius-button;
+  background: rgba(255, 255, 255, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all $transition-base;
+
+  &:active {
+    opacity: 0.88;
+    transform: scale(0.97);
+  }
+}
+
+.magicBtnText {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $color-primary;
+  white-space: nowrap;
+}
+
+.magicResult {
+  margin-top: $spacing-md;
+  padding: $spacing-lg;
+  background: $color-bg-card;
+  border-radius: $radius-xl;
+  box-shadow: $shadow-card;
+}
+
+.magicResultHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.magicResultTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.magicRefresh {
+  font-size: $font-size-sm;
+  color: $color-primary;
+}
+
+.magicList {
+  display: flex;
+  margin-top: $spacing-md;
+}
+
+.magicItem {
+  flex: 1;
+  margin-right: $spacing-sm;
+  transition: all $transition-base;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &:active {
+    opacity: 0.88;
+  }
+}
+
+.magicImage {
+  width: 100%;
+  height: 180rpx;
+  border-radius: $radius-md;
+  background: $color-bg-hover;
+}
+
+.magicName {
+  display: block;
+  margin-top: $spacing-xs;
+  font-size: $font-size-xs;
+  color: $color-text-primary;
+  @include text-ellipsis;
+}
+
+.magicCategory {
+  display: block;
+  margin-top: 2rpx;
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.chips {
+  margin-top: $spacing-md;
+  @include scroll-x-container;
+}
+
+.chip {
+  @include scroll-x-item(112rpx);
+  height: 64rpx;
+  line-height: 64rpx;
+  margin-right: $spacing-sm;
+  text-align: center;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  background: $color-bg-card;
+  border-radius: $radius-button;
+  white-space: nowrap;
+  transition: all $transition-fast;
+
+  &:active {
+    opacity: 0.85;
+  }
+}
+
+.chipActive {
+  color: $color-text-white;
+  font-weight: $font-weight-medium;
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+}
+
+.list {
+  margin-top: $spacing-md;
+}
+
+.listItem {
+  margin-bottom: $spacing-md;
+}

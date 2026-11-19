@@ -1,0 +1,62 @@
+<view class="page">
+  <view class="block">
+    <text class="fieldLabel">衣橱照片</text>
+    <view class="imagePicker">
+      <image class="imagePreview" wx:if="{{cover}}" src="{{cover}}" mode="aspectFill" />
+      <view class="imageEmpty" wx:else>
+        <text class="imageEmptyIcon">🚪</text>
+        <text class="imageEmptyText">上传你家衣橱的照片</text>
+      </view>
+    </view>
+    <view class="photoActions">
+      <view class="photoBtn" data-source="camera" bindtap="chooseImage">
+        <text class="photoBtnText">📷 拍照</text>
+      </view>
+      <view class="photoBtn" data-source="album" bindtap="chooseImage">
+        <text class="photoBtnText">🖼 从相册选择</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="block">
+    <text class="fieldLabel">衣橱名称</text>
+    <input
+      class="input"
+      value="{{name}}"
+      maxlength="16"
+      placeholder="例如：主卧大衣橱"
+      placeholder-class="placeholder"
+      bindinput="handleNameInput"
+    />
+  </view>
+
+  <view class="block">
+    <text class="fieldLabel">摆放位置（选填）</text>
+    <input
+      class="input"
+      value="{{location}}"
+      maxlength="20"
+      placeholder="例如：主卧靠窗"
+      placeholder-class="placeholder"
+      bindinput="handleLocationInput"
+    />
+  </view>
+
+  <view class="block">
+    <view class="shareRow" bindtap="toggleShare">
+      <view class="shareInfo">
+        <text class="shareTitle">家庭共享</text>
+        <text class="shareDesc">开启后家人可一起查看和整理这个衣橱</text>
+      </view>
+      <view class="switchTrack {{isShared ? 'switchOn' : ''}}">
+        <view class="switchDot"></view>
+      </view>
+    </view>
+  </view>
+
+  <view class="saveBar">
+    <view class="saveBtn" bindtap="handleSave">
+      <text class="saveText">创建衣橱</text>
+    </view>
+  </view>
+</view>

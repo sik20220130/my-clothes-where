@@ -1,0 +1,292 @@
+.page {
+  min-height: 100vh;
+  padding-bottom: 48rpx;
+  background: #f7f4fc;
+}
+
+.header {
+  position: relative;
+  padding: 32rpx 32rpx 150rpx;
+  background: linear-gradient(135deg, #7b5bd6 0%, #9b7ff0 55%, #ffa9be 100%);
+  border-radius: 0 0 48rpx 48rpx;
+  overflow: hidden;
+}
+.header::after {
+  content: "";
+  position: absolute;
+  top: -80rpx;
+  right: -60rpx;
+  width: 260rpx;
+  height: 260rpx;
+  border-radius: 999rpx;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.topRow {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.greetWrap {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.greeting {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.3;
+}
+
+.subText {
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.avatarWrap {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 999rpx;
+  overflow: hidden;
+  border: 4rpx solid rgba(255, 255, 255, 0.5);
+  flex-shrink: 0;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.body {
+  position: relative;
+  z-index: 2;
+  margin-top: -116rpx;
+  padding: 0 32rpx;
+}
+
+.hero {
+  position: relative;
+  height: 380rpx;
+  border-radius: 20rpx;
+  overflow: hidden;
+  box-shadow: 0 8rpx 28rpx rgba(123, 91, 214, 0.24);
+}
+
+.heroImage {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.heroMask {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(43, 36, 64, 0) 30%, rgba(43, 36, 64, 0.72) 100%);
+}
+
+.heroContent {
+  position: absolute;
+  left: 32rpx;
+  right: 32rpx;
+  bottom: 32rpx;
+}
+
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6rpx 18rpx;
+  border-radius: 999rpx;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.heroBadgeText {
+  font-size: 22rpx;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.heroTitle {
+  display: block;
+  margin-top: 16rpx;
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #ffffff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.heroTags {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 8rpx;
+}
+
+.heroTag {
+  margin-right: 16rpx;
+  font-size: 22rpx;
+  color: rgba(255, 255, 255, 0.9);
+  white-space: nowrap;
+}
+
+.heroActions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 24rpx;
+}
+
+.heroBtnGhost {
+  height: 64rpx;
+  padding: 0 32rpx;
+  border-radius: 48rpx;
+  border: 1rpx solid rgba(123, 91, 214, 0.3);
+  background: rgba(255, 255, 255, 0.72);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16rpx;
+  transition: all 0.25s ease;
+}
+.heroBtnGhost:active {
+  opacity: 0.88;
+  transform: scale(0.98);
+}
+
+.heroBtnGhostText {
+  font-size: 24rpx;
+  color: #7b5bd6;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.heroBtn {
+  height: 64rpx;
+  padding: 0 32rpx;
+  border-radius: 48rpx;
+  background: linear-gradient(135deg, #7b5bd6 0%, #a189ec 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+}
+.heroBtn:active {
+  opacity: 0.9;
+  transform: scale(0.98);
+}
+
+.heroBtnText {
+  font-size: 24rpx;
+  color: #ffffff;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.quickCard {
+  display: flex;
+  align-items: center;
+  margin-top: 24rpx;
+  padding: 24rpx 8rpx;
+  background: #ffffff;
+  border-radius: 20rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.08);
+}
+
+.quickItem {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.25s ease;
+}
+.quickItem:active {
+  opacity: 0.88;
+  transform: scale(0.96);
+}
+
+.quickEmojiWrap {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 28rpx;
+  background: #f3eefb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quickEmoji {
+  font-size: 40rpx;
+  line-height: 1;
+}
+
+.quickLabel {
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  color: #6b6480;
+  white-space: nowrap;
+}
+
+.statsCard {
+  display: flex;
+  align-items: center;
+  margin-top: 24rpx;
+  padding: 32rpx 0;
+  background: #ffffff;
+  border-radius: 20rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.08);
+}
+
+.statItem {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.statValue {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #7b5bd6;
+}
+
+.statLabel {
+  margin-top: 6rpx;
+  font-size: 22rpx;
+  color: #9c95b0;
+  white-space: nowrap;
+}
+
+.statDivider {
+  width: 1rpx;
+  height: 56rpx;
+  background: #f4f0fb;
+}
+
+.section {
+  margin-top: 48rpx;
+}
+
+.inspirationGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.gridItem {
+  width: calc(50% - 12rpx);
+  margin-bottom: 24rpx;
+}
+
+.quickEmojiWrap{width:88rpx;height:88rpx;border-radius:999rpx;background:linear-gradient(135deg,#f6f0ff,#ffeaf1);box-shadow:inset 0 0 0 1rpx rgba(123,91,214,0.10),0 4rpx 12rpx rgba(123,91,214,0.10);}
+.quickEmoji{font-size:40rpx;line-height:1;}

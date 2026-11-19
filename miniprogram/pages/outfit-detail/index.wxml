@@ -1,0 +1,50 @@
+<view class="page">
+  <block wx:if="{{notFound}}">
+    <empty-state
+      emoji="🔮"
+      title="搭配不存在"
+      description="这套搭配可能已经飞走了"
+      action-text="返回灵感"
+      bind:action="goBack"
+    />
+  </block>
+
+  <block wx:elif="{{outfit}}">
+    <image class="cover" src="{{outfit.cover}}" mode="aspectFill" />
+
+    <view class="content">
+      <view class="card">
+        <view class="sceneBadge">
+          <text class="sceneText">{{sceneText}}</text>
+        </view>
+        <text class="title">{{outfit.title}}</text>
+        <text class="author">来自 {{outfit.author}}</text>
+
+        <view class="tags">
+          <text class="tag" wx:for="{{outfit.tags}}" wx:key="*this">#{{item}}</text>
+        </view>
+      </view>
+
+      <view class="card">
+        <text class="sectionTitle">搭配灵感</text>
+        <text class="description">{{outfit.description}}</text>
+      </view>
+
+      <view class="card">
+        <text class="sectionTitle">单品清单</text>
+        <view class="itemRow" wx:for="{{outfit.itemNames}}" wx:key="*this">
+          <view class="itemIndex">
+            <text class="itemIndexText">{{index + 1}}</text>
+          </view>
+          <text class="itemName">{{item}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="actionBar">
+      <view class="likeBtn" bindtap="toggleLike">
+        <text class="likeText">{{liked ? '♥ 已收藏' : '♡ 收藏这套搭配'}}</text>
+      </view>
+    </view>
+  </block>
+</view>

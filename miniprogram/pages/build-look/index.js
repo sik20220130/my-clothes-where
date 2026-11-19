@@ -1,0 +1,113 @@
+const store = require('../../utils/store');
+const { formatYMD } = require('../../utils/date');
+
+const SLOTS = [
+  { key: 'top', label: '上装', emoji: '👕', categories: ['top', 'dress'] },
+  { key: 'bottom', label: '下装', emoji: '👖', categories: ['bottom'] },
+  { key: 'outer', label: '外套', emoji: '🧥', categories: ['outer'] },
+  { key: 'shoes', label: '鞋履', emoji: '👟', categories: ['shoes'] },
+  { key: 'extra', label: '饰品', emoji: '💍', categories: ['bag', 'accessory'] }
+];
+
+Page({
+  data: {
+    slots: SLOTS,
+    activeSlot: 'top',
+    lookName: '',
+    boardSlots: [],
+    selectedCount: 0,
+    pickerItems: [],
+    saveDisabled: true
+  },
+
+  onLoad() {
+    this.items = store.getSortedItems();
+    this.selected = {};
+    this.syncView();
+  },
+
+  syncView() {
+    const items = this.items;
+    const selected = this.selected;
+    const activeSlot = this.data.activeSlot;
+    const activeMeta = SLOTS.find((slot) => slot.key === activeSlot) || SLOTS[0];
+
+    const boardSlots = SLOTS.map((slot) => {
+      const id = selected[slot.key];
+      const item = id ? items.find((it) => it.id === id) : null;
+      return {
+        key: slot.key,
+        label: slot.label,
+        emoji: slot.emoji,
+        image: item ? item.image : ''
+      };
+    });
+
+    const pickerItems = items
+      .filter((item) => activeMeta.categories.indexOf(item.category) >= 0)
+      .map((item) => ({
+        id: item.id,
+        name: item.name,
+        image: item.image,
+        active: selected[activeSlot] === item.id
+      }));
+
+    const selectedCount = SLOTS.filter((slot) => selected[slot.key]).length;
+
+    this.setData({
+      boardSlots,
+      pickerItems,
+      selectedCount,
+      saveDisabled: selectedCount < 2
+    });
+  },
+
+  handleSlotTap(event) {
+    const key = event.currentTarget.dataset.key;
+    if (this.selected[key]) {
+      delete this.selected[key];
+      this.syncView();
+      return;
+    }
+    this.setData({ activeSlot: key }, () => this.syncView());
+  },
+
+  selectSlotTab(event) {
+    this.setData({ activeSlot: event.currentTarget.dataset.key }, () => this.syncView());
+  },
+
+  handlePickerSelect(event) {
+    const id = event.currentTarget.dataset.id;
+    const activeSlot = this.data.activeSlot;
+    this.selected[activeSlot] = this.selected[activeSlot] === id ? undefined : id;
+    if (!this.selected[activeSlot]) {
+      delete this.selected[activeSlot];
+    }
+    this.syncView();
+  },
+
+  handleNameInput(event) {
+    this.setData({ lookName: event.detail.value });
+  },
+
+  handleSave() {
+    const selectedItems = SLOTS.map((slot) => this.selected[slot.key])
+      .filter(Boolean)
+      .map((id) => this.items.find((item) => item.id === id))
+      .filter(Boolean);
+
+    if (selectedItems.length < 2) {
+      wx.showToast({ title: '至少选择 2 件单品', icon: 'none' });
+      return;
+    }
+
+    store.addLook({
+      id: `look-${Date.now()}`,
+      name: this.data.lookName.trim() || '我的搭配',
+      itemIds: selectedItems.map((item) => item.id),
+      createdAt: formatYMD()
+    });
+    wx.showToast({ title: '搭配已保存', icon: 'success', duration: 800 });
+    setTimeout(() => wx.navigateBack(), 800);
+  }
+});

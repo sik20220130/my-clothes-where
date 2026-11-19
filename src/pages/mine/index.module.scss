@@ -1,0 +1,164 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  padding: $spacing-lg $page-padding $spacing-xl;
+  background: linear-gradient(180deg, #f0eafa 0%, $color-bg-page 420rpx);
+}
+
+.profileCard {
+  padding: $spacing-lg;
+  border-radius: $radius-xl;
+  background: linear-gradient(135deg, #7b5bd6 0%, #a189ec 60%, #ffa9be 100%);
+  box-shadow: 0 10rpx 28rpx rgba(123, 91, 214, 0.3);
+}
+
+.profileRow {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 128rpx;
+  height: 128rpx;
+  border-radius: $radius-round;
+  border: 4rpx solid rgba(255, 255, 255, 0.6);
+  flex-shrink: 0;
+}
+
+.profileInfo {
+  margin-left: $spacing-md;
+  min-width: 0;
+}
+
+.name {
+  display: block;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-text-white;
+}
+
+.levelBadge {
+  display: inline-flex;
+  align-items: center;
+  margin-top: $spacing-xs;
+  padding: 6rpx 16rpx;
+  border-radius: $radius-round;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.levelText {
+  font-size: $font-size-xs;
+  color: $color-text-white;
+  white-space: nowrap;
+}
+
+.statsRow {
+  display: flex;
+  align-items: center;
+  margin-top: $spacing-lg;
+  padding-top: $spacing-md;
+  border-top: 1rpx solid rgba(255, 255, 255, 0.24);
+}
+
+.statItem {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.statValue {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-text-white;
+}
+
+.statLabel {
+  margin-top: 4rpx;
+  font-size: $font-size-xs;
+  color: rgba(255, 255, 255, 0.82);
+  white-space: nowrap;
+}
+
+.statDivider {
+  width: 1rpx;
+  height: 52rpx;
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.menuCard {
+  margin-top: $spacing-md;
+  padding: 0 $spacing-lg;
+  background: $color-bg-card;
+  border-radius: $radius-xl;
+  box-shadow: $shadow-card;
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  padding: $spacing-md 0;
+  border-bottom: 1rpx solid $color-divider;
+  transition: all $transition-fast;
+
+  &:active {
+    opacity: 0.8;
+  }
+}
+
+.menuItemLast {
+  border-bottom: none;
+}
+
+.menuEmojiWrap {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 24rpx;
+  background: $color-bg-tag;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.menuEmoji {
+  font-size: 32rpx;
+  line-height: 1;
+}
+
+.menuTextWrap {
+  flex: 1;
+  margin-left: $spacing-md;
+  min-width: 0;
+}
+
+.menuLabel {
+  display: block;
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+}
+
+.menuDesc {
+  display: block;
+  margin-top: 4rpx;
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  @include text-ellipsis;
+}
+
+.menuArrow {
+  margin-left: $spacing-sm;
+  font-size: $font-size-xl;
+  color: $color-text-disabled;
+  line-height: 1;
+}
+
+.footer {
+  display: block;
+  margin-top: $spacing-xl;
+  text-align: center;
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}

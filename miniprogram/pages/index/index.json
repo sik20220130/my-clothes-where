@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "我的衣服在哪",
+  "usingComponents": {
+    "outfit-card": "/components/outfit-card/index",
+    "section-header": "/components/section-header/index"
+  }
+}

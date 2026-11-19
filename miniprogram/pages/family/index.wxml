@@ -1,0 +1,53 @@
+<view class="page">
+  <view class="hero">
+    <text class="heroTitle">一家人的共享衣橱</text>
+    <text class="heroDesc">互相看看今天穿什么，也能一起整理收纳</text>
+    <view class="codeRow">
+      <view>
+        <text class="codeLabel">家庭邀请码</text>
+        <text class="codeValue">{{inviteCode}}</text>
+      </view>
+      <view class="copyBtn" bindtap="handleCopy">
+        <text class="copyText">复制</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <section-header title="家庭成员" subtitle="{{members.length}} 位" />
+    <view class="membersCard">
+      <view class="member" wx:for="{{members}}" wx:key="id">
+        <image class="memberAvatar" src="{{item.avatar}}" mode="aspectFill" />
+        <text class="memberName">{{item.name}}</text>
+        <text class="memberRole">{{item.role}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <section-header title="共享衣橱" subtitle="{{sharedCount}} 个已开启" />
+    <view class="cabinetCard" wx:for="{{wardrobes}}" wx:key="id">
+      <image class="cabinetCover" src="{{item.cover}}" mode="aspectFill" />
+      <view class="cabinetInfo">
+        <text class="cabinetName">{{item.name}}</text>
+        <text class="cabinetMeta">{{item.location}} · {{item.count}} 件</text>
+      </view>
+      <view
+        class="switchTrack {{item.isShared ? 'switchOn' : ''}}"
+        data-id="{{item.id}}"
+        bindtap="toggleShare"
+      >
+        <view class="switchDot"></view>
+      </view>
+    </view>
+  </view>
+
+  <view class="noteCard">
+    <text class="noteTitle">演示版说明</text>
+    <text class="noteText">当前 Demo 使用本地数据模拟家庭共享。接入微信云开发后，家人通过邀请码加入同一家庭，衣橱与单品将实时同步，支持多端查看与协作整理。</text>
+  </view>
+
+  <view class="inviteBtn" bindtap="handleInvite">
+    <text class="inviteText">邀请家人加入</text>
+  </view>
+</view>

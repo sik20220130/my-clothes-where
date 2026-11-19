@@ -1,0 +1,30 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 32rpx;
+  background: linear-gradient(180deg, #f0eafa 0%, #f7f4fc 100%);
+}
+
+.emoji {
+  font-size: 120rpx;
+  line-height: 1;
+  filter: drop-shadow(0 8rpx 16rpx rgba(123, 91, 214, 0.2));
+}
+
+.title {
+  margin-top: 32rpx;
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #2b2440;
+}
+
+.hint {
+  margin-top: 16rpx;
+  font-size: 28rpx;
+  color: #9c95b0;
+}
+
+.emoji{display:flex;align-items:center;justify-content:center;width:184rpx;height:184rpx;border-radius:52rpx;background:linear-gradient(135deg,#f6f0ff,#ffeaf1);box-shadow:inset 0 0 0 1rpx rgba(123,91,214,0.08);font-size:84rpx;line-height:1;}

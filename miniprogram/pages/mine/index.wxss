@@ -1,0 +1,166 @@
+.page {
+  min-height: 100vh;
+  padding: 32rpx 32rpx 48rpx;
+  background: linear-gradient(180deg, #f0eafa 0%, #f7f4fc 420rpx);
+}
+
+.profileCard {
+  padding: 32rpx;
+  border-radius: 20rpx;
+  background: linear-gradient(135deg, #7b5bd6 0%, #a189ec 60%, #ffa9be 100%);
+  box-shadow: 0 10rpx 28rpx rgba(123, 91, 214, 0.3);
+}
+
+.profileRow {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 128rpx;
+  height: 128rpx;
+  border-radius: 999rpx;
+  border: 4rpx solid rgba(255, 255, 255, 0.6);
+  flex-shrink: 0;
+}
+
+.profileInfo {
+  margin-left: 24rpx;
+  min-width: 0;
+}
+
+.name {
+  display: block;
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.levelBadge {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 8rpx;
+  padding: 6rpx 16rpx;
+  border-radius: 999rpx;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.levelText {
+  font-size: 22rpx;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.statsRow {
+  display: flex;
+  align-items: center;
+  margin-top: 32rpx;
+  padding-top: 24rpx;
+  border-top: 1rpx solid rgba(255, 255, 255, 0.24);
+}
+
+.statItem {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.statValue {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.statLabel {
+  margin-top: 4rpx;
+  font-size: 22rpx;
+  color: rgba(255, 255, 255, 0.82);
+  white-space: nowrap;
+}
+
+.statDivider {
+  width: 1rpx;
+  height: 52rpx;
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.menuCard {
+  margin-top: 24rpx;
+  padding: 0 32rpx;
+  background: #ffffff;
+  border-radius: 20rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.08);
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid #f4f0fb;
+  transition: all 0.15s ease;
+}
+.menuItem:active {
+  opacity: 0.8;
+}
+
+.menuItemLast {
+  border-bottom: none;
+}
+
+.menuEmojiWrap {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 24rpx;
+  background: #f3eefb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.menuEmoji {
+  font-size: 32rpx;
+  line-height: 1;
+}
+
+.menuTextWrap {
+  flex: 1;
+  margin-left: 24rpx;
+  min-width: 0;
+}
+
+.menuLabel {
+  display: block;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #2b2440;
+}
+
+.menuDesc {
+  display: block;
+  margin-top: 4rpx;
+  font-size: 22rpx;
+  color: #9c95b0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.menuArrow {
+  margin-left: 16rpx;
+  font-size: 36rpx;
+  color: #c9c3d8;
+  line-height: 1;
+}
+
+.footer {
+  display: block;
+  margin-top: 48rpx;
+  text-align: center;
+  font-size: 22rpx;
+  color: #9c95b0;
+}
+
+.menuEmojiWrap{border-radius:20rpx;background:linear-gradient(135deg,#f6f0ff,#ffeaf1);box-shadow:inset 0 0 0 1rpx rgba(123,91,214,0.10);}
+.menuEmoji{font-size:36rpx;line-height:1;}

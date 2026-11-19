@@ -1,0 +1,18 @@
+<view class="card" bindtap="handleTap">
+  <view class="image-wrap">
+    <image class="image" src="{{item.image}}" mode="aspectFill" binderror="handleImageError" />
+    <view class="badge">
+      <text class="badge-text">{{categoryLabel}}</text>
+    </view>
+    <view class="fav-btn" catchtap="handleFavorite">
+      <text class="fav-icon {{item.favorite ? 'fav-icon-active' : ''}}">{{item.favorite ? '♥' : '♡'}}</text>
+    </view>
+  </view>
+  <view class="info">
+    <text class="name">{{item.name}}</text>
+    <view class="meta-row">
+      <view class="color-dot" style="background-color: {{item.colorHex}}"></view>
+      <text class="color-name">{{item.color}}</text>
+    </view>
+  </view>
+</view>

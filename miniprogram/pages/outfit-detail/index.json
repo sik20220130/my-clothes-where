@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "搭配详情",
+  "usingComponents": {
+    "empty-state": "/components/empty-state/index"
+  }
+}

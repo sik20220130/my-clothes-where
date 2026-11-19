@@ -1,0 +1,5 @@
+<view class="page">
+  <text class="emoji">📅</text>
+  <text class="title">穿搭日历</text>
+  <text class="hint">功能正在开发中...</text>
+</view>

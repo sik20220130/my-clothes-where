@@ -1,0 +1,61 @@
+<view class="page">
+  <view class="header">
+    <view class="topRow">
+      <view class="greetWrap">
+        <text class="greeting">{{greeting}}，欢迎回来</text>
+        <text class="subText">{{todayText}} · 上海 · 晴 18°C</text>
+      </view>
+      <view class="avatarWrap" bindtap="goMine">
+        <image class="avatar" src="{{avatar}}" mode="aspectFill" />
+      </view>
+    </view>
+  </view>
+
+  <view class="body">
+    <view class="quickCard">
+      <view
+        class="quickItem"
+        wx:for="{{quickEntries}}"
+        wx:key="key"
+        data-key="{{item.key}}"
+        bindtap="handleQuickEntry"
+      >
+        <view class="quickEmojiWrap">
+          <text class="quickEmoji">{{item.emoji}}</text>
+        </view>
+        <text class="quickLabel">{{item.label}}</text>
+      </view>
+    </view>
+
+    <view class="statsCard">
+      <view class="statItem">
+        <text class="statValue">{{stats.total}}</text>
+        <text class="statLabel">衣橱单品</text>
+      </view>
+      <view class="statDivider"></view>
+      <view class="statItem">
+        <text class="statValue">{{stats.monthly}}</text>
+        <text class="statLabel">本月新增</text>
+      </view>
+      <view class="statDivider"></view>
+      <view class="statItem">
+        <text class="statValue">{{stats.topEmoji}}</text>
+        <text class="statLabel">最多 {{stats.topLabel}}</text>
+      </view>
+    </view>
+
+    <view class="section">
+      <section-header
+        title="今日灵感"
+        subtitle="每天都有新的穿搭灵感"
+        extra="更多"
+        bind:extra="goOutfitTab"
+      />
+      <view class="inspirationGrid">
+        <view class="gridItem" wx:for="{{inspirations}}" wx:key="id">
+          <outfit-card outfit="{{item}}" variant="grid" bind:select="goOutfitDetail" />
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

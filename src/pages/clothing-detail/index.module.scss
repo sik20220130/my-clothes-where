@@ -1,0 +1,230 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  padding-bottom: 240rpx;
+  background: $color-bg-page;
+}
+
+.image {
+  width: 100%;
+  height: 750rpx;
+  display: block;
+  background: $color-bg-hover;
+}
+
+.content {
+  position: relative;
+  margin-top: -60rpx;
+  padding: 0 $page-padding;
+}
+
+.card {
+  padding: $spacing-lg;
+  background: $color-bg-card;
+  border-radius: $radius-xl;
+  box-shadow: $shadow-card;
+}
+
+.nameRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.name {
+  flex: 1;
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  line-height: $line-height-tight;
+  @include text-ellipsis-multi(2);
+}
+
+.categoryBadge {
+  flex-shrink: 0;
+  margin-left: $spacing-sm;
+  padding: 6rpx 16rpx;
+  border-radius: $radius-round;
+  background: $color-bg-tag;
+}
+
+.categoryText {
+  font-size: $font-size-xs;
+  color: $color-primary;
+  white-space: nowrap;
+}
+
+.brand {
+  display: block;
+  margin-top: $spacing-xs;
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: $spacing-sm;
+}
+
+.chip {
+  margin-right: $spacing-sm;
+  padding: 4rpx 16rpx;
+  border-radius: $radius-round;
+  background: $color-bg-tag;
+  font-size: $font-size-xs;
+  color: $color-primary;
+}
+
+.infoRow {
+  display: flex;
+  align-items: center;
+  margin-top: $spacing-lg;
+  padding-top: $spacing-md;
+  border-top: 1rpx solid $color-divider;
+}
+
+.infoItem {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+}
+
+.infoValue {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  @include text-ellipsis;
+  max-width: 100%;
+}
+
+.infoLabel {
+  margin-top: 4rpx;
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  white-space: nowrap;
+}
+
+.infoDivider {
+  width: 1rpx;
+  height: 52rpx;
+  background: $color-divider;
+}
+
+.noteCard {
+  margin-top: $spacing-md;
+  padding: $spacing-lg;
+  background: $color-bg-card;
+  border-radius: $radius-xl;
+  box-shadow: $shadow-card;
+}
+
+.cabinetRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: $spacing-md;
+  padding-top: $spacing-md;
+  border-top: 1rpx solid $color-divider;
+
+  &:active {
+    opacity: 0.8;
+  }
+}
+
+.cabinetLabel {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.cabinetValue {
+  max-width: 70%;
+  font-size: $font-size-sm;
+  color: $color-primary;
+  @include text-ellipsis;
+}
+
+.noteLabel {
+  display: block;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $color-text-secondary;
+}
+
+.noteText {
+  display: block;
+  margin-top: $spacing-xs;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  line-height: $line-height-loose;
+}
+
+.deleteText {
+  display: block;
+  margin-top: $spacing-lg;
+  text-align: center;
+  font-size: $font-size-sm;
+  color: $color-error;
+}
+
+.actionBar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  padding: $spacing-sm $page-padding calc(#{$spacing-sm} + env(safe-area-inset-bottom));
+  background: $color-bg-card;
+  box-shadow: 0 -4rpx 16rpx rgba(43, 36, 64, 0.06);
+  z-index: 20;
+}
+
+.ghostBtn {
+  height: $button-height-lg;
+  padding: 0 $spacing-lg;
+  margin-right: $spacing-sm;
+  border-radius: $radius-button;
+  border: 1rpx solid $color-border;
+  background: $color-bg-card;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all $transition-base;
+
+  &:active {
+    opacity: 0.85;
+  }
+}
+
+.ghostBtnText {
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  white-space: nowrap;
+}
+
+.primaryBtn {
+  flex: 1;
+  height: $button-height-lg;
+  border-radius: $radius-button;
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all $transition-base;
+
+  &:active {
+    opacity: 0.9;
+    transform: scale(0.99);
+  }
+}
+
+.primaryBtnText {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-white;
+  white-space: nowrap;
+}

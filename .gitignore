@@ -1,0 +1,11 @@
+node_modules/
+dist/
+dist-h5/
+miniprogram_npm/
+.pai/
+.swc/
+.DS_Store
+*.log
+.env
+.env.*
+project.private.config.json

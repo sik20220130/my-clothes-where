@@ -1,0 +1,46 @@
+@use '@/styles/variables.scss' as *;
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+}
+
+.left {
+  display: flex;
+  align-items: baseline;
+  min-width: 0;
+}
+
+.title {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.subtitle {
+  margin-left: $spacing-sm;
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  @include text-ellipsis;
+}
+
+.extra {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding-left: $spacing-md;
+}
+
+.extraText {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.arrow {
+  margin-left: 4rpx;
+  font-size: $font-size-lg;
+  color: $color-text-tertiary;
+  line-height: 1;
+}

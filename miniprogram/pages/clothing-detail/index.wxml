@@ -1,0 +1,71 @@
+<view class="page">
+  <block wx:if="{{notFound}}">
+    <empty-state
+      emoji="🪄"
+      title="单品不见了"
+      description="这件单品可能已经被删除"
+      action-text="返回衣橱"
+      bind:action="goBack"
+    />
+  </block>
+
+  <block wx:elif="{{item}}">
+    <image class="image" src="{{item.image}}" mode="aspectFill" />
+
+    <view class="content">
+      <view class="card">
+        <view class="nameRow">
+          <text class="name">{{item.name}}</text>
+          <view class="categoryBadge">
+            <text class="categoryText">{{categoryEmoji}} {{categoryLabel}}</text>
+          </view>
+        </view>
+        <text class="brand">{{item.brand}}</text>
+        <view class="chips">
+          <text class="chip" wx:for="{{item.seasons}}" wx:key="*this">{{item}}</text>
+        </view>
+
+        <view class="infoRow">
+          <view class="infoItem infoItemClickable" bindtap="toggleFavorite">
+            <text class="infoValue infoHeart {{favorite ? 'infoHeartActive' : ''}}">{{favorite ? '♥' : '♡'}}</text>
+            <text class="infoLabel">{{favorite ? '已喜欢' : '标记喜欢'}}</text>
+          </view>
+          <view class="infoDivider"></view>
+          <view class="infoItem">
+            <text class="infoValue">{{item.color}}</text>
+            <text class="infoLabel">颜色</text>
+          </view>
+          <view class="infoDivider"></view>
+          <view class="infoItem">
+            <text class="infoValue">{{item.addedAt}}</text>
+            <text class="infoLabel">加入日期</text>
+          </view>
+        </view>
+
+        <view class="cabinetRow" bindtap="handleTransfer">
+          <text class="cabinetLabel">所在衣橱</text>
+          <text class="cabinetValue">{{cabinetName}} · 点击转移 ›</text>
+        </view>
+      </view>
+
+      <view class="noteCard" wx:if="{{item.note}}">
+        <text class="noteLabel">搭配备注</text>
+        <text class="noteText">{{item.note}}</text>
+      </view>
+
+      <text class="deleteText" bindtap="handleDelete">删除这件单品</text>
+    </view>
+
+    <view class="actionBar">
+      <view class="ghostBtn" bindtap="goEdit">
+        <text class="ghostBtnText">编辑</text>
+      </view>
+      <view class="ghostBtn" bindtap="handleTransfer">
+        <text class="ghostBtnText">转移</text>
+      </view>
+      <view class="primaryBtn" bindtap="toggleFavorite">
+        <text class="primaryBtnText">{{favorite ? '♥ 已喜欢' : '♡ 标记喜欢'}}</text>
+      </view>
+    </view>
+  </block>
+</view>

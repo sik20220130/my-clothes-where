@@ -1,0 +1,55 @@
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 96rpx 32rpx;
+  width: 100%;
+}
+
+.emoji {
+  font-size: 96rpx;
+  margin-bottom: 24rpx;
+}
+
+.title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #2b2440;
+  text-align: center;
+}
+
+.description {
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  color: #9c95b0;
+  text-align: center;
+  line-height: 1.8;
+}
+
+.action {
+  margin-top: 32rpx;
+  min-width: 240rpx;
+  height: 80rpx;
+  padding: 0 32rpx;
+  border-radius: 48rpx;
+  background: linear-gradient(135deg, #7b5bd6 0%, #a189ec 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+}
+
+.action:active {
+  opacity: 0.9;
+  transform: scale(0.98);
+}
+
+.action-text {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.emoji{display:flex;align-items:center;justify-content:center;width:160rpx;height:160rpx;border-radius:999rpx;background:linear-gradient(135deg,#f6f0ff,#ffeaf1);box-shadow:inset 0 0 0 1rpx rgba(123,91,214,0.08);font-size:72rpx;line-height:1;margin-bottom:32rpx;}

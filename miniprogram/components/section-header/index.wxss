@@ -1,0 +1,46 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24rpx;
+}
+
+.left {
+  display: flex;
+  align-items: baseline;
+  min-width: 0;
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #2b2440;
+}
+
+.subtitle {
+  margin-left: 16rpx;
+  font-size: 24rpx;
+  color: #9c95b0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.extra {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding-left: 24rpx;
+}
+
+.extra-text {
+  font-size: 24rpx;
+  color: #9c95b0;
+}
+
+.arrow {
+  margin-left: 4rpx;
+  font-size: 32rpx;
+  color: #9c95b0;
+  line-height: 1;
+}

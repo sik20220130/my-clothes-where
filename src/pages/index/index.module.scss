@@ -1,0 +1,293 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  padding-bottom: $spacing-xl;
+  background: $color-bg-page;
+}
+
+.header {
+  position: relative;
+  padding: $spacing-lg $page-padding 150rpx;
+  background: linear-gradient(135deg, #7b5bd6 0%, #9b7ff0 55%, #ffa9be 100%);
+  border-radius: 0 0 48rpx 48rpx;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -80rpx;
+    right: -60rpx;
+    width: 260rpx;
+    height: 260rpx;
+    border-radius: $radius-round;
+    background: rgba(255, 255, 255, 0.14);
+  }
+}
+
+.topRow {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.greetWrap {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.greeting {
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  color: $color-text-white;
+  line-height: $line-height-tight;
+}
+
+.subText {
+  margin-top: $spacing-xs;
+  font-size: $font-size-sm;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.avatarWrap {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: $radius-round;
+  overflow: hidden;
+  border: 4rpx solid rgba(255, 255, 255, 0.5);
+  flex-shrink: 0;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.body {
+  position: relative;
+  z-index: 2;
+  margin-top: -116rpx;
+  padding: 0 $page-padding;
+}
+
+.hero {
+  position: relative;
+  height: 380rpx;
+  border-radius: $radius-xl;
+  overflow: hidden;
+  box-shadow: 0 8rpx 28rpx rgba(123, 91, 214, 0.24);
+}
+
+.heroImage {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.heroMask {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(43, 36, 64, 0) 30%, rgba(43, 36, 64, 0.72) 100%);
+}
+
+.heroContent {
+  position: absolute;
+  left: $spacing-lg;
+  right: $spacing-lg;
+  bottom: $spacing-lg;
+}
+
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6rpx 18rpx;
+  border-radius: $radius-round;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.heroBadgeText {
+  font-size: $font-size-xs;
+  color: $color-text-white;
+  white-space: nowrap;
+}
+
+.heroTitle {
+  display: block;
+  margin-top: $spacing-sm;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-text-white;
+  @include text-ellipsis;
+}
+
+.heroTags {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: $spacing-xs;
+}
+
+.heroTag {
+  margin-right: $spacing-sm;
+  font-size: $font-size-xs;
+  color: rgba(255, 255, 255, 0.9);
+  white-space: nowrap;
+}
+
+.heroActions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: $spacing-md;
+}
+
+.heroBtnGhost {
+  height: $button-height-sm;
+  padding: 0 $spacing-lg;
+  border-radius: $radius-button;
+  border: 1rpx solid rgba(123, 91, 214, 0.3);
+  background: rgba(255, 255, 255, 0.72);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: $spacing-sm;
+  transition: all $transition-base;
+
+  &:active {
+    opacity: 0.88;
+    transform: scale(0.98);
+  }
+}
+
+.heroBtnGhostText {
+  font-size: $font-size-sm;
+  color: $color-primary;
+  font-weight: $font-weight-medium;
+  white-space: nowrap;
+}
+
+.heroBtn {
+  height: $button-height-sm;
+  padding: 0 $spacing-lg;
+  border-radius: $radius-button;
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all $transition-base;
+
+  &:active {
+    opacity: 0.9;
+    transform: scale(0.98);
+  }
+}
+
+.heroBtnText {
+  font-size: $font-size-sm;
+  color: $color-text-white;
+  font-weight: $font-weight-medium;
+  white-space: nowrap;
+}
+
+.quickCard {
+  display: flex;
+  align-items: center;
+  margin-top: $spacing-md;
+  padding: $spacing-md $spacing-xs;
+  background: $color-bg-card;
+  border-radius: $radius-xl;
+  box-shadow: $shadow-card;
+}
+
+.quickItem {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all $transition-base;
+
+  &:active {
+    opacity: 0.88;
+    transform: scale(0.96);
+  }
+}
+
+.quickEmojiWrap {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 28rpx;
+  background: $color-bg-tag;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quickEmoji {
+  font-size: 40rpx;
+  line-height: 1;
+}
+
+.quickLabel {
+  margin-top: $spacing-xs;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  white-space: nowrap;
+}
+
+.statsCard {
+  display: flex;
+  align-items: center;
+  margin-top: $spacing-md;
+  padding: $spacing-lg 0;
+  background: $color-bg-card;
+  border-radius: $radius-xl;
+  box-shadow: $shadow-card;
+}
+
+.statItem {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.statValue {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-primary;
+}
+
+.statLabel {
+  margin-top: 6rpx;
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  white-space: nowrap;
+}
+
+.statDivider {
+  width: 1rpx;
+  height: 56rpx;
+  background: $color-divider;
+}
+
+.section {
+  margin-top: $spacing-xl;
+}
+
+.inspirationGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.gridItem {
+  width: calc(50% - 12rpx);
+  margin-bottom: $spacing-md;
+}

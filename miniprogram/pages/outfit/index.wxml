@@ -1,0 +1,81 @@
+<view class="page">
+  <view class="header">
+    <text class="title">搭配灵感</text>
+    <text class="subtitle">让魔镜为你生成今日造型</text>
+  </view>
+
+  <view class="looksSection">
+    <view class="looksHeader">
+      <text class="looksTitle">我的搭配</text>
+      <text class="looksMore" bindtap="goBuildLook">去搭配 ›</text>
+    </view>
+    <scroll-view class="lookScroll" scroll-x>
+      <view class="createCard" bindtap="goBuildLook">
+        <text class="createIcon">＋</text>
+        <text class="createText">新建搭配</text>
+      </view>
+      <view class="lookCard" wx:for="{{lookCards}}" wx:key="id">
+        <view class="lookImages">
+          <image
+            class="lookImage"
+            wx:for="{{item.images}}"
+            wx:for-item="image"
+            wx:key="*this"
+            src="{{image}}"
+            mode="aspectFill"
+          />
+        </view>
+        <view class="lookFooter">
+          <text class="lookName">{{item.name}}</text>
+          <text class="lookDelete" data-id="{{item.id}}" data-name="{{item.name}}" bindtap="handleRemoveLook">删除</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="magicBanner">
+    <view class="magicBannerText">
+      <text class="magicTitle">✨ 一键搭配</text>
+      <text class="magicDesc">基于你的衣橱，随机组合一套今日造型</text>
+    </view>
+    <view class="magicBtn" bindtap="handleMagic">
+      <text class="magicBtnText">一键搭配</text>
+    </view>
+  </view>
+
+  <view class="magicResult" wx:if="{{magic}}">
+    <view class="magicResultHeader">
+      <text class="magicResultTitle">今日推荐造型</text>
+      <text class="magicRefresh" bindtap="handleMagic">换一组</text>
+    </view>
+    <view class="magicList">
+      <view
+        class="magicItem"
+        wx:for="{{magic.items}}"
+        wx:key="id"
+        data-id="{{item.id}}"
+        bindtap="goClothing"
+      >
+        <image class="magicImage" src="{{item.image}}" mode="aspectFill" />
+        <text class="magicName">{{item.name}}</text>
+        <text class="magicCategory">{{item.categoryLabel}}</text>
+      </view>
+    </view>
+  </view>
+
+  <scroll-view class="chips" scroll-x>
+    <view
+      class="chip {{scene === item.key ? 'chipActive' : ''}}"
+      wx:for="{{sceneList}}"
+      wx:key="key"
+      data-key="{{item.key}}"
+      bindtap="selectScene"
+    >{{item.label}}</view>
+  </scroll-view>
+
+  <view class="list">
+    <view class="listItem" wx:for="{{filtered}}" wx:key="id">
+      <outfit-card outfit="{{item}}" bind:select="goDetail" />
+    </view>
+  </view>
+</view>

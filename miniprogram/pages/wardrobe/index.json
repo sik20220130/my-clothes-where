@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "我的衣橱",
+  "usingComponents": {
+    "clothing-card": "/components/clothing-card/index",
+    "empty-state": "/components/empty-state/index"
+  }
+}
