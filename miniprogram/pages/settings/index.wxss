@@ -86,8 +86,8 @@
 }
 
 .rowIcon {
-  font-size: 34rpx;
-  line-height: 1;
+  width: 38rpx;
+  height: 38rpx;
 }
 
 .rowText {
@@ -101,6 +101,10 @@
   font-size: 28rpx;
   font-weight: 500;
   color: #2b2440;
+}
+
+.rowTitleDanger {
+  color: #f53f3f;
 }
 
 .rowDesc {

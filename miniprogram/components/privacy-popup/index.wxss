@@ -1,0 +1,87 @@
+.mask {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 999;
+  background: rgba(43, 36, 64, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 48rpx;
+}
+
+.card {
+  width: 100%;
+  padding: 48rpx 40rpx 36rpx;
+  border-radius: 24rpx;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+.title {
+  display: block;
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #2b2440;
+  text-align: center;
+}
+
+.desc {
+  display: block;
+  margin-top: 20rpx;
+  font-size: 26rpx;
+  color: #6b6480;
+  line-height: 1.7;
+}
+
+.link {
+  display: block;
+  margin-top: 16rpx;
+  font-size: 26rpx;
+  color: #7b5bd6;
+}
+
+.actions {
+  display: flex;
+  margin-top: 36rpx;
+}
+
+.btn {
+  flex: 1;
+  height: 88rpx;
+  border-radius: 48rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  font-size: 28rpx;
+}
+
+.btn::after {
+  border: none;
+}
+
+.ghost {
+  margin-right: 20rpx;
+  background: #f3eefb;
+}
+
+.ghostText {
+  font-size: 28rpx;
+  color: #7b5bd6;
+  font-weight: 500;
+}
+
+.primary {
+  background: linear-gradient(135deg, #7b5bd6 0%, #a189ec 100%);
+}
+
+.primaryText {
+  font-size: 28rpx;
+  color: #ffffff;
+  font-weight: 600;
+}

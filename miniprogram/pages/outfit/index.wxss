@@ -143,6 +143,18 @@
   min-width: 0;
 }
 
+.magicTitleRow {
+  display: flex;
+  align-items: center;
+}
+
+.magicTitleIcon {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 8rpx;
+  flex-shrink: 0;
+}
+
 .magicTitle {
   display: block;
   font-size: 32rpx;

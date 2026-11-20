@@ -1,15 +1,12 @@
 const store = require('../../utils/store');
-const { outfits } = require('../../data/outfits');
-const { CATEGORY_META } = require('../../utils/category');
 const { greeting, formatMD, weekLabel, monthPrefix } = require('../../utils/date');
 
 const AVATAR = 'https://picsum.photos/id/64/200/200';
 
 const QUICK_ENTRIES = [
-  { key: 'add', emoji: '📷', label: '拍照收纳' },
-  { key: 'wardrobe', emoji: '👗', label: '我的衣橱' },
-  { key: 'family', emoji: '👨‍👩‍👧', label: '家庭共享' },
-  { key: 'outfit', emoji: '✨', label: '搭配灵感' }
+  { key: 'add', icon: 'camera', label: '拍照收纳' },
+  { key: 'wardrobe', icon: 'hanger', label: '我的衣橱' },
+  { key: 'outfit', icon: 'sparkle', label: '我的搭配' }
 ];
 
 Page({
@@ -21,18 +18,36 @@ Page({
     stats: {
       total: 0,
       monthly: 0,
-      topLabel: '—',
-      topEmoji: '✨'
+      wardrobeCount: 0
     },
-    inspirations: []
+    recentItems: [],
+    isEmpty: true
   },
 
   onLoad() {
     this.setData({
       greeting: greeting(),
-      todayText: `${formatMD()} ${weekLabel()}`,
-      inspirations: outfits.slice(3, 7)
+      todayText: `${formatMD()} ${weekLabel()}`
     });
+    this.maybeShowOnboarding();
+  },
+
+  // 首次进入：未完成引导且没有单品时展示教学卡片
+  maybeShowOnboarding() {
+    if (this.onboardingChecked) return;
+    this.onboardingChecked = true;
+    const app = getApp();
+    const ready = app.globalData && app.globalData.readyPromise;
+    const check = () => {
+      if (store.isOnboardingNeeded()) {
+        wx.navigateTo({ url: '/pages/onboarding/index' });
+      }
+    };
+    if (ready && typeof ready.then === 'function') {
+      ready.then(check, check);
+      return;
+    }
+    setTimeout(check, 300);
   },
 
   onShow() {
@@ -40,28 +55,23 @@ Page({
   },
 
   refreshStats() {
-    const items = store.getState().items;
+    const state = store.getState();
+    const items = state.items;
     const prefix = monthPrefix();
-    const counter = {};
-    items.forEach((item) => {
-      counter[item.category] = (counter[item.category] || 0) + 1;
-    });
-    const topKey = Object.keys(counter).sort((a, b) => counter[b] - counter[a])[0];
-    const meta = topKey ? CATEGORY_META[topKey] : null;
+    const recentItems = items
+      .slice()
+      .sort((a, b) => String(b.addedAt).localeCompare(String(a.addedAt)))
+      .slice(0, 6);
 
     this.setData({
+      isEmpty: items.length === 0,
+      recentItems,
       stats: {
         total: items.length,
         monthly: items.filter((item) => item.addedAt.indexOf(prefix) === 0).length,
-        topLabel: meta ? meta.label : '—',
-        topEmoji: meta ? meta.emoji : '✨'
+        wardrobeCount: state.wardrobes.length
       }
     });
-  },
-
-  goOutfitDetail(event) {
-    const { outfit } = event.detail;
-    wx.navigateTo({ url: `/pages/outfit-detail/index?id=${outfit.id}` });
   },
 
   handleQuickEntry(event) {
@@ -74,18 +84,23 @@ Page({
       wx.switchTab({ url: '/pages/wardrobe/index' });
       return;
     }
-    if (key === 'family') {
-      wx.navigateTo({ url: '/pages/family/index' });
-      return;
-    }
     wx.switchTab({ url: '/pages/outfit/index' });
+  },
+
+  goAdd() {
+    wx.navigateTo({ url: '/pages/add-clothing/index' });
+  },
+
+  goItemDetail(event) {
+    const { id } = event.currentTarget.dataset;
+    wx.navigateTo({ url: `/pages/clothing-detail/index?id=${id}` });
+  },
+
+  goWardrobe() {
+    wx.switchTab({ url: '/pages/wardrobe/index' });
   },
 
   goMine() {
     wx.switchTab({ url: '/pages/mine/index' });
-  },
-
-  goOutfitTab() {
-    wx.switchTab({ url: '/pages/outfit/index' });
   }
 });

@@ -112,6 +112,23 @@ Page({
     wx.navigateTo({ url: '/pages/add-clothing/index' });
   },
 
+  handleLoadSample() {
+    const that = this;
+    wx.showModal({
+      title: '载入示例数据',
+      content: '将写入一组内置示例衣橱与单品，方便快速体验。确定继续吗？',
+      confirmText: '载入',
+      confirmColor: '#7b5bd6',
+      success(res) {
+        if (!res.confirm) return;
+        store.loadSampleData().then(() => {
+          that.refresh();
+          wx.showToast({ title: '示例数据已载入', icon: 'none' });
+        });
+      }
+    });
+  },
+
   goManage() {
     wx.navigateTo({ url: '/pages/wardrobe-manage/index' });
   }

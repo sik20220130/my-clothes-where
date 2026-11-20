@@ -1,7 +1,7 @@
 <view class="page">
   <view class="header">
-    <text class="title">搭配灵感</text>
-    <text class="subtitle">整理与收藏你的日常穿搭</text>
+    <text class="title">我的搭配</text>
+    <text class="subtitle">整理日常穿搭，随时回看</text>
   </view>
 
   <view class="looksSection">
@@ -9,7 +9,8 @@
       <text class="looksTitle">我的搭配</text>
       <text class="looksMore" bindtap="goBuildLook">去搭配 ›</text>
     </view>
-    <scroll-view class="lookScroll" scroll-x>
+
+    <scroll-view class="lookScroll" scroll-x wx:if="{{lookCards.length > 0}}">
       <view class="createCard" bindtap="goBuildLook">
         <text class="createIcon">＋</text>
         <text class="createText">新建搭配</text>
@@ -37,51 +38,14 @@
         </view>
       </view>
     </scroll-view>
-  </view>
 
-  <view class="magicBanner">
-    <view class="magicBannerText">
-      <text class="magicTitle">✨ 一键搭配</text>
-      <text class="magicDesc">基于你的衣橱，随机组合一套今日造型</text>
-    </view>
-    <view class="magicBtn" bindtap="handleMagic">
-      <text class="magicBtnText">一键搭配</text>
-    </view>
-  </view>
-
-  <view class="magicResult" wx:if="{{magic}}">
-    <view class="magicResultHeader">
-      <text class="magicResultTitle">今日推荐造型</text>
-      <text class="magicRefresh" bindtap="handleMagic">换一组</text>
-    </view>
-    <view class="magicList">
-      <view
-        class="magicItem"
-        wx:for="{{magic.items}}"
-        wx:key="id"
-        data-id="{{item.id}}"
-        bindtap="goClothing"
-      >
-        <image class="magicImage" src="{{item.image}}" mode="aspectFill" />
-        <text class="magicName">{{item.name}}</text>
-        <text class="magicCategory">{{item.categoryLabel}}</text>
-      </view>
-    </view>
-  </view>
-
-  <scroll-view class="chips" scroll-x>
-    <view
-      class="chip {{scene === item.key ? 'chipActive' : ''}}"
-      wx:for="{{sceneList}}"
-      wx:key="key"
-      data-key="{{item.key}}"
-      bindtap="selectScene"
-    >{{item.label}}</view>
-  </scroll-view>
-
-  <view class="list">
-    <view class="listItem" wx:for="{{filtered}}" wx:key="id">
-      <outfit-card outfit="{{item}}" bind:select="goDetail" />
-    </view>
+    <empty-state
+      wx:else
+      emoji="🎨"
+      title="还没有搭配"
+      description="先收纳至少 2 件单品，再把它们组合成一套搭配。"
+      action-text="去添加单品"
+      bind:action="goAdd"
+    />
   </view>
 </view>

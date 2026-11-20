@@ -51,9 +51,11 @@
 .scene {
   font-size: 22rpx;
   color: #ffffff;
-  background: rgba(123, 91, 214, 0.75);
-  padding: 4rpx 14rpx;
+  line-height: 1.2;
+  background: linear-gradient(135deg, #7b5bd6 0%, #a189ec 100%);
+  padding: 6rpx 18rpx;
   border-radius: 999rpx;
+  box-shadow: 0 2rpx 8rpx rgba(43, 36, 64, 0.2);
 }
 
 .likes {

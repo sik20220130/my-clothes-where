@@ -4,7 +4,7 @@
       emoji="🔮"
       title="搭配不存在"
       description="这套搭配可能已经飞走了"
-      action-text="返回灵感"
+      action-text="返回"
       bind:action="goBack"
     />
   </block>
@@ -20,30 +20,51 @@
         <text class="title">{{outfit.title}}</text>
         <text class="author">来自 {{outfit.author}}</text>
 
-        <view class="tags">
+        <view class="tags" wx:if="{{outfit.tags.length > 0}}">
           <text class="tag" wx:for="{{outfit.tags}}" wx:key="*this">#{{item}}</text>
         </view>
       </view>
 
       <view class="card">
-        <text class="sectionTitle">搭配灵感</text>
+        <text class="sectionTitle">搭配说明</text>
         <text class="description">{{outfit.description}}</text>
       </view>
 
       <view class="card">
         <text class="sectionTitle">单品清单</text>
-        <view class="itemRow" wx:for="{{outfit.itemNames}}" wx:key="*this">
-          <view class="itemIndex">
-            <text class="itemIndexText">{{index + 1}}</text>
+
+        <block wx:if="{{isOwn}}">
+          <view class="itemRow" wx:for="{{outfit.items}}" wx:key="id">
+            <image
+              class="itemThumb"
+              wx:if="{{item.image}}"
+              src="{{item.image}}"
+              mode="aspectFill"
+            />
+            <view class="itemThumb itemThumbMissing" wx:else>
+              <text class="itemMissingMark">?</text>
+            </view>
+            <text class="itemName {{item.missing ? 'itemNameMissing' : ''}}">{{item.name}}</text>
           </view>
-          <text class="itemName">{{item}}</text>
-        </view>
+        </block>
+
+        <block wx:else>
+          <view class="itemRow" wx:for="{{outfit.itemNames}}" wx:key="*this">
+            <view class="itemIndex">
+              <text class="itemIndexText">{{index + 1}}</text>
+            </view>
+            <text class="itemName">{{item}}</text>
+          </view>
+        </block>
       </view>
     </view>
 
-    <view class="actionBar">
-      <view class="likeBtn" bindtap="toggleLike">
-        <text class="likeText">{{liked ? '♥ 已收藏' : '♡ 收藏这套搭配'}}</text>
+    <view class="actionBar" wx:if="{{isOwn}}">
+      <view class="actionBtn ghostBtn" bindtap="goEdit">
+        <text class="ghostText">编辑</text>
+      </view>
+      <view class="actionBtn dangerBtn" bindtap="handleDelete">
+        <text class="dangerText">删除</text>
       </view>
     </view>
   </block>

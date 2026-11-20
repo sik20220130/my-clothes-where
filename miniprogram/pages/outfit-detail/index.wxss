@@ -125,34 +125,74 @@
   white-space: nowrap;
 }
 
+.itemThumb {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 12rpx;
+  background: #f3eefb;
+  flex-shrink: 0;
+}
+
+.itemThumbMissing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2rpx dashed #d9d3e8;
+  background: #f7f4fc;
+}
+
+.itemMissingMark {
+  font-size: 28rpx;
+  color: #c9c3d8;
+}
+
+.itemNameMissing {
+  color: #9c95b0;
+}
+
 .actionBar {
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
+  display: flex;
   padding: 16rpx 32rpx calc(16rpx + env(safe-area-inset-bottom));
   background: #ffffff;
   box-shadow: 0 -4rpx 16rpx rgba(43, 36, 64, 0.06);
   z-index: 20;
 }
 
-.likeBtn {
-  height: 96rpx;
+.actionBtn {
+  flex: 1;
+  height: 88rpx;
   border-radius: 48rpx;
-  background: linear-gradient(135deg, #7b5bd6 0%, #ff8fa8 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.25s ease;
 }
-.likeBtn:active {
+.actionBtn:active {
   opacity: 0.9;
   transform: scale(0.99);
 }
 
-.likeText {
-  font-size: 32rpx;
+.ghostBtn {
+  margin-right: 20rpx;
+  background: #f3eefb;
+}
+
+.ghostText {
+  font-size: 30rpx;
   font-weight: 600;
-  color: #ffffff;
-  white-space: nowrap;
+  color: #7b5bd6;
+}
+
+.dangerBtn {
+  background: #fdecec;
+}
+
+.dangerText {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #f53f3f;
 }

@@ -20,9 +20,25 @@ Page({
     saveDisabled: true
   },
 
-  onLoad() {
+  onLoad(options) {
     this.items = store.getSortedItems();
     this.selected = {};
+    const editingLook = options && options.id ? store.getLook(options.id) : null;
+    if (editingLook) {
+      this.editingLook = editingLook;
+      wx.setNavigationBarTitle({ title: '编辑搭配' });
+      (editingLook.itemIds || []).forEach((id) => {
+        const item = this.items.find((it) => it.id === id);
+        if (!item) return;
+        const slot = SLOTS.find((current) => current.categories.indexOf(item.category) >= 0);
+        if (slot && !this.selected[slot.key]) {
+          this.selected[slot.key] = id;
+        }
+      });
+      this.setData({
+        lookName: editingLook.name === '我的搭配' ? '' : editingLook.name
+      });
+    }
     this.syncView();
   },
 
@@ -101,13 +117,21 @@ Page({
       return;
     }
 
-    store.addLook({
-      id: `look-${Date.now()}`,
-      name: this.data.lookName.trim() || '我的搭配',
-      itemIds: selectedItems.map((item) => item.id),
-      createdAt: formatYMD()
-    });
-    wx.showToast({ title: '搭配已保存', icon: 'success', duration: 800 });
+    const name = this.data.lookName.trim() || '我的搭配';
+    const itemIds = selectedItems.map((item) => item.id);
+
+    if (this.editingLook) {
+      store.updateLook({ id: this.editingLook.id, name, itemIds });
+      wx.showToast({ title: '搭配已更新', icon: 'success', duration: 800 });
+    } else {
+      store.addLook({
+        id: `look-${Date.now()}`,
+        name,
+        itemIds,
+        createdAt: formatYMD()
+      });
+      wx.showToast({ title: '搭配已保存', icon: 'success', duration: 800 });
+    }
     setTimeout(() => wx.navigateBack(), 800);
   }
 });

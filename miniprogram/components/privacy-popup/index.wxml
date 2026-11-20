@@ -1,0 +1,20 @@
+<view class="mask" wx:if="{{show}}" catchtouchmove="noop">
+  <view class="card">
+    <text class="title">隐私保护提示</text>
+    <text class="desc">为了拍摄或从相册选择单品照片，需要你授权访问相册与摄像头。拒绝授权也不影响手动填写并保存单品信息。</text>
+    <text class="link" bindtap="openContract">查看《用户隐私保护指引》</text>
+    <view class="actions">
+      <view class="btn ghost" bindtap="handleDisagree">
+        <text class="ghostText">暂不授权</text>
+      </view>
+      <button
+        class="btn primary"
+        id="agree-btn"
+        open-type="agreePrivacyAuthorization"
+        bindagreeprivacyauthorization="handleAgree"
+      >
+        <text class="primaryText">同意并继续</text>
+      </button>
+    </view>
+  </view>
+</view>

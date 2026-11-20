@@ -7,6 +7,9 @@
     <view class="fav-btn" catchtap="handleFavorite">
       <text class="fav-icon {{item.favorite ? 'fav-icon-active' : ''}}">{{item.favorite ? '♥' : '♡'}}</text>
     </view>
+    <view class="syncBadge" wx:if="{{item.syncState === 'pending'}}">
+      <text class="syncBadgeText">未同步</text>
+    </view>
   </view>
   <view class="info">
     <text class="name">{{item.name}}</text>

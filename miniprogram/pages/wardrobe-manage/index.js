@@ -18,7 +18,10 @@ Page({
     });
     this.setData({
       wardrobes: state.wardrobes.map((cabinet) =>
-        Object.assign({}, cabinet, { count: counts[cabinet.id] || 0 })
+        Object.assign({}, cabinet, {
+          count: counts[cabinet.id] || 0,
+          displayName: cabinet.name || '未命名衣橱'
+        })
       )
     });
   },
@@ -47,9 +50,9 @@ Page({
       wx.showToast({ title: '至少保留一个衣橱', icon: 'none' });
       return;
     }
-    const target = state.wardrobes.find((cabinet) => cabinet.id !== id);
+    const target = store.getTransferTarget(id);
     const content =
-      count > 0
+      count > 0 && target
         ? `「${name}」内有 ${count} 件单品，删除后将转移到「${target.name}」。`
         : `确定删除「${name}」吗？`;
     wx.showModal({
@@ -59,7 +62,7 @@ Page({
       confirmColor: '#f53f3f',
       success: (res) => {
         if (!res.confirm) return;
-        const result = store.removeCabinet(id);
+        const result = store.removeWardrobe(id);
         if (!result.ok) {
           wx.showToast({
             title: result.reason === 'last' ? '至少保留一个衣橱' : '衣橱不存在',
@@ -74,12 +77,5 @@ Page({
         this.refresh();
       }
     });
-  },
-
-  handleToggleShare(event) {
-    const { id, name } = event.currentTarget.dataset;
-    store.toggleCabinetShare(id);
-    wx.showToast({ title: `${name}共享状态已更新`, icon: 'none' });
-    this.refresh();
   }
 });

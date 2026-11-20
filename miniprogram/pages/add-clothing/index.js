@@ -12,6 +12,17 @@ const DEFAULT_IMAGES = {
   accessory: 'https://picsum.photos/id/103/600/600'
 };
 
+// 新建单品按当前月份单季预选：3-5 春、6-8 夏、9-11 秋、12-2 冬
+function defaultSeason() {
+  const month = new Date().getMonth() + 1;
+  if (month >= 3 && month <= 5) return '春';
+  if (month >= 6 && month <= 8) return '夏';
+  if (month >= 9 && month <= 11) return '秋';
+  return '冬';
+}
+
+const DEFAULT_SEASON = defaultSeason();
+
 Page({
   data: {
     isEditing: false,
@@ -19,16 +30,17 @@ Page({
     name: '',
     category: '',
     colorIndex: 0,
-    seasons: ['春', '秋'],
+    seasons: [DEFAULT_SEASON],
     brand: '',
     note: '',
     wardrobeId: '',
     wardrobes: [],
     categories: CATEGORY_LIST.filter((item) => item.key !== 'all'),
     colorOptions: COLOR_OPTIONS,
-    seasonOptions: SEASON_LIST.map((name) => ({ name, active: name === '春' || name === '秋' })),
+    seasonOptions: SEASON_LIST.map((name) => ({ name, active: name === DEFAULT_SEASON })),
     colorName: COLOR_OPTIONS[0].name,
-    canSave: false
+    canSave: false,
+    showPrivacy: false
   },
 
   onLoad(options) {
@@ -78,13 +90,47 @@ Page({
       sizeType: ['compressed'],
       success(res) {
         if (res.tempFiles && res.tempFiles.length > 0) {
-          that.setData({ image: res.tempFiles[0].tempFilePath });
+          // 选图后必须进入裁切页，不允许跳过直接上传
+          that.openCrop(res.tempFiles[0].tempFilePath);
         }
       },
       fail(error) {
         console.error('[AddClothing] 获取照片失败:', error);
+        wx.showToast({ title: '未获取到照片，可手动填写保存', icon: 'none' });
       }
     });
+  },
+
+  // 跳转裁切页（单品 3:4），确认后回填裁切结果
+  openCrop(src) {
+    const that = this;
+    wx.navigateTo({
+      url: `/pages/image-crop/index?mode=item&src=${encodeURIComponent(src)}`,
+      events: {
+        cropResult(payload) {
+          if (payload && payload.path) {
+            that.setData({ image: payload.path });
+          }
+        }
+      }
+    });
+  },
+
+  // 由 app.js 的隐私授权监听调用
+  showPrivacyPopup() {
+    this.setData({ showPrivacy: true });
+  },
+
+  // open-type="agreePrivacyAuthorization" 点击后微信会自动放行原接口，这里只需关闭弹窗
+  handlePrivacyAgree() {
+    getApp().globalData.privacyResolve = null;
+    this.setData({ showPrivacy: false });
+  },
+
+  // 拒绝授权：原接口返回失败，降级为手动填写表单
+  handlePrivacyDisagree() {
+    getApp().resolvePrivacy(false);
+    this.setData({ showPrivacy: false });
   },
 
   handleNameInput(event) {
@@ -131,6 +177,10 @@ Page({
     this.setData({ canSave: this.data.name.trim().length > 0 && this.data.category !== '' });
   },
 
+  goCreateCabinet() {
+    wx.navigateTo({ url: '/pages/add-wardrobe/index' });
+  },
+
   handleSave() {
     const { name, category, image, seasons, brand, note, wardrobeId, colorIndex, wardrobes } = this.data;
     if (!name.trim()) {
@@ -142,9 +192,27 @@ Page({
       return;
     }
 
+    const targetWardrobeId = wardrobeId || (wardrobes[0] ? wardrobes[0].id : '');
+    if (!targetWardrobeId) {
+      wx.showModal({
+        title: '先创建一个衣橱',
+        content: '单品需要归入衣橱，创建衣橱后再回来保存。',
+        confirmText: '去创建',
+        confirmColor: '#7b5bd6',
+        success(res) {
+          if (res.confirm) {
+            wx.navigateTo({ url: '/pages/add-wardrobe/index' });
+          }
+        }
+      });
+      return;
+    }
+
     const color = COLOR_OPTIONS[colorIndex];
     const editingItem = this.editingItem;
     store.saveImage(image).then((savedImage) => {
+      const finalImage = savedImage || DEFAULT_IMAGES[category];
+      const pending = store.isLocalImagePath(finalImage);
       const payload = {
         id: editingItem ? editingItem.id : `c-${Date.now()}`,
         name: name.trim(),
@@ -152,19 +220,25 @@ Page({
         color: color.name,
         colorHex: color.hex,
         seasons: seasons.length > 0 ? seasons : ['四季'],
-        image: savedImage || DEFAULT_IMAGES[category],
+        image: finalImage,
         brand: brand.trim() || '未填写',
         favorite: editingItem ? !!editingItem.favorite : false,
         addedAt: editingItem ? editingItem.addedAt : formatYMD(),
-        wardrobeId: wardrobeId || (wardrobes[0] ? wardrobes[0].id : ''),
-        note: note.trim() || undefined
+        wardrobeId: targetWardrobeId,
+        note: note.trim() || undefined,
+        syncState: pending ? 'pending' : 'synced'
       };
 
       if (editingItem) {
         store.updateItem(payload);
-        wx.showToast({ title: '修改已保存', icon: 'success', duration: 800 });
       } else {
         store.addItem(payload);
+      }
+      if (pending) {
+        wx.showToast({ title: '已保存到本机，稍后自动同步', icon: 'none' });
+      } else if (editingItem) {
+        wx.showToast({ title: '修改已保存', icon: 'success', duration: 800 });
+      } else {
         wx.showToast({ title: '已加入衣橱', icon: 'success', duration: 800 });
       }
       setTimeout(() => wx.navigateBack(), 800);

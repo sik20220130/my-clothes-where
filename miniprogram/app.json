@@ -12,7 +12,9 @@
     "pages/clothing-detail/index",
     "pages/outfit-detail/index",
     "pages/calendar/index",
-    "pages/settings/index"
+    "pages/settings/index",
+    "pages/onboarding/index",
+    "pages/image-crop/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -41,7 +43,7 @@
       },
       {
         "pagePath": "pages/outfit/index",
-        "text": "灵感",
+        "text": "搭配",
         "iconPath": "assets/tabbar/outfit.png",
         "selectedIconPath": "assets/tabbar/outfit-selected.png"
       },
@@ -54,5 +56,6 @@
     ]
   },
   "style": "v2",
+  "__usePrivacyCheck__": true,
   "sitemapLocation": "sitemap.json"
 }

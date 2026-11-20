@@ -4,17 +4,21 @@
     <view class="imagePicker">
       <image class="imagePreview" wx:if="{{image}}" src="{{image}}" mode="aspectFill" />
       <view class="imageEmpty" wx:else>
-        <text class="imageEmptyIcon">📷</text>
+        <view class="imageEmptyIcon">
+          <view class="imageEmptyGlyph mw-icon mw-icon-camera"></view>
+        </view>
         <text class="imageEmptyText">拍下你的单品</text>
         <text class="imageEmptyHint">直接调用相机拍摄衣物，会更清晰</text>
       </view>
     </view>
     <view class="photoActions">
       <view class="photoBtn" data-source="camera" bindtap="chooseImage">
-        <text class="photoBtnText">📷 拍照</text>
+        <view class="photoBtnIcon mw-icon mw-icon-camera"></view>
+        <text class="photoBtnText">拍照</text>
       </view>
       <view class="photoBtn" data-source="album" bindtap="chooseImage">
-        <text class="photoBtnText">🖼 从相册选择</text>
+        <view class="photoBtnIcon mw-icon mw-icon-image"></view>
+        <text class="photoBtnText">从相册选择</text>
       </view>
     </view>
   </view>
@@ -41,6 +45,9 @@
         data-id="{{item.id}}"
         bindtap="selectCabinet"
       >{{item.name}}</view>
+    </view>
+    <view class="cabinetEmpty" wx:if="{{wardrobes.length === 0}}" bindtap="goCreateCabinet">
+      <text class="cabinetEmptyText">还没有衣橱，先创建一个 ›</text>
     </view>
   </view>
 
@@ -115,4 +122,10 @@
       <text class="saveText">{{isEditing ? '保存修改' : '加入我的衣橱'}}</text>
     </view>
   </view>
+
+  <privacy-popup
+    show="{{showPrivacy}}"
+    bind:agree="handlePrivacyAgree"
+    bind:disagree="handlePrivacyDisagree"
+  />
 </view>

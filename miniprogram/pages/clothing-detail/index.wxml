@@ -21,6 +21,9 @@
           </view>
         </view>
         <text class="brand">{{item.brand}}</text>
+        <view class="syncTip" wx:if="{{item.syncState === 'pending'}}">
+          <text class="syncTipText">图片未同步 · 联网后自动上传</text>
+        </view>
         <view class="chips">
           <text class="chip" wx:for="{{item.seasons}}" wx:key="*this">{{item}}</text>
         </view>

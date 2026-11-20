@@ -21,7 +21,7 @@
         bindtap="handleQuickEntry"
       >
         <view class="quickEmojiWrap">
-          <text class="quickEmoji">{{item.emoji}}</text>
+          <view class="quickIcon mw-icon mw-icon-{{item.icon}}"></view>
         </view>
         <text class="quickLabel">{{item.label}}</text>
       </view>
@@ -39,23 +39,37 @@
       </view>
       <view class="statDivider"></view>
       <view class="statItem">
-        <text class="statValue">{{stats.topEmoji}}</text>
-        <text class="statLabel">最多 {{stats.topLabel}}</text>
+        <text class="statValue">{{stats.wardrobeCount}}</text>
+        <text class="statLabel">衣橱数量</text>
       </view>
     </view>
 
-    <view class="section">
-      <section-header
-        title="今日灵感"
-        subtitle="每天都有新的穿搭灵感"
-        extra="更多"
-        bind:extra="goOutfitTab"
-      />
-      <view class="inspirationGrid">
-        <view class="gridItem" wx:for="{{inspirations}}" wx:key="id">
-          <outfit-card outfit="{{item}}" variant="grid" bind:select="goOutfitDetail" />
-        </view>
+    <view class="recentSection" wx:if="{{!isEmpty}}">
+      <view class="recentHeader">
+        <text class="recentTitle">最近添加</text>
+        <text class="recentMore" bindtap="goWardrobe">查看全部 ›</text>
       </view>
+      <scroll-view class="recentScroll" scroll-x>
+        <view
+          class="recentCard"
+          wx:for="{{recentItems}}"
+          wx:key="id"
+          data-id="{{item.id}}"
+          bindtap="goItemDetail"
+        >
+          <image class="recentImage" src="{{item.image}}" mode="aspectFill" />
+          <text class="recentName">{{item.name}}</text>
+        </view>
+      </scroll-view>
     </view>
+
+    <empty-state
+      wx:if="{{isEmpty}}"
+      emoji="🪄"
+      title="欢迎来到你的数字衣橱"
+      description="先添加几件衣服，首页会显示本月新增与常用入口。"
+      action-text="开始添加"
+      bind:action="goAdd"
+    />
   </view>
 </view>

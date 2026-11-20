@@ -20,7 +20,7 @@ Component({
     outfit(outfit) {
       if (!outfit || !outfit.scene) return;
       const meta = SCENE_META[outfit.scene];
-      this.setData({ sceneText: meta ? `${meta.emoji} ${meta.label}` : '' });
+      this.setData({ sceneText: meta ? meta.label : '' });
     }
   },
 

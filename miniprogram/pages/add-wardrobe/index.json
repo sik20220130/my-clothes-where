@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "添加衣橱",
-  "usingComponents": {}
+  "usingComponents": {
+    "privacy-popup": "/components/privacy-popup/index"
+  }
 }

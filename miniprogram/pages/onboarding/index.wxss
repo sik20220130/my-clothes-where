@@ -1,0 +1,232 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: linear-gradient(160deg, #7b5bd6 0%, #a189ec 100%);
+}
+
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 88rpx;
+  padding-left: 40rpx;
+  box-sizing: content-box;
+}
+
+.skip {
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.swiper {
+  flex: 1;
+  width: 100%;
+  height: 0;
+}
+
+swiper-item {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 24rpx 0;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  margin: 0 16rpx;
+  border-radius: 40rpx;
+  background: #ffffff;
+  overflow: hidden;
+  box-shadow: 0 16rpx 48rpx rgba(43, 36, 64, 0.18);
+}
+
+.mock {
+  flex: 0 0 46%;
+  display: flex;
+  flex-direction: column;
+  padding: 36rpx;
+  box-sizing: border-box;
+  background: #f7f4fc;
+}
+
+.mockStats {
+  display: flex;
+}
+
+.mockStat {
+  flex: 1;
+  height: 72rpx;
+  margin-right: 16rpx;
+  border-radius: 12rpx;
+  background: #e9e1f8;
+}
+
+.mockStat:last-child {
+  margin-right: 0;
+}
+
+.mockWide {
+  height: 160rpx;
+  margin-top: 24rpx;
+  border-radius: 16rpx;
+  background: #efe9fa;
+}
+
+.mockLine {
+  height: 20rpx;
+  margin-top: 20rpx;
+  border-radius: 10rpx;
+  background: #e9e1f8;
+}
+
+.mockLineShort {
+  width: 60%;
+}
+
+.mockSearch {
+  height: 56rpx;
+  border-radius: 28rpx;
+  background: #ffffff;
+}
+
+.mockGrid {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20rpx;
+}
+
+.mockTile {
+  width: calc((100% - 32rpx) / 3);
+  height: 96rpx;
+  margin-right: 16rpx;
+  margin-top: 16rpx;
+  border-radius: 12rpx;
+  background: #e9e1f8;
+}
+
+.mockTile:nth-child(3n) {
+  margin-right: 0;
+}
+
+.mockAdd {
+  display: flex;
+  height: 100%;
+}
+
+.mockPhoto {
+  width: 40%;
+  margin-right: 24rpx;
+  border-radius: 16rpx;
+  background: #e9e1f8;
+}
+
+.mockForm {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.mockChips {
+  display: flex;
+  margin-top: 20rpx;
+}
+
+.mockChip {
+  width: 64rpx;
+  height: 40rpx;
+  margin-right: 12rpx;
+  border-radius: 20rpx;
+  background: #e9e1f8;
+}
+
+.mockLook {
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+
+.mockSlot {
+  flex: 1;
+  height: 140rpx;
+  margin-right: 12rpx;
+  border-radius: 12rpx;
+  background: #e9e1f8;
+}
+
+.mockSlot:last-child {
+  margin-right: 0;
+}
+
+.cardBody {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 36rpx 40rpx;
+  box-sizing: border-box;
+}
+
+.pageTag {
+  align-self: flex-start;
+  padding: 6rpx 20rpx;
+  border-radius: 24rpx;
+  background: #f0e9fb;
+  font-size: 22rpx;
+  color: #7b5bd6;
+}
+
+.cardTitle {
+  margin-top: 20rpx;
+  font-size: 38rpx;
+  font-weight: 700;
+  color: #2b2440;
+}
+
+.cardDesc {
+  margin-top: 16rpx;
+  font-size: 26rpx;
+  line-height: 1.7;
+  color: #6b6480;
+}
+
+.footer {
+  padding: 0 48rpx;
+  padding-bottom: calc(48rpx + env(safe-area-inset-bottom));
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 36rpx;
+}
+
+.dot {
+  width: 8rpx;
+  height: 8rpx;
+  margin: 0 6rpx;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transition: all 0.2s ease;
+}
+
+.dotActive {
+  width: 32rpx;
+  border-radius: 4rpx;
+  background: #ffffff;
+}
+
+.nextBtn {
+  height: 96rpx;
+  line-height: 96rpx;
+  border-radius: 48rpx;
+  background: #ffffff;
+  text-align: center;
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #7b5bd6;
+}

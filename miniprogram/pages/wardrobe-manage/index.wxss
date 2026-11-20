@@ -69,6 +69,10 @@
   flex-shrink: 0;
 }
 
+.coverDefault {
+  background: linear-gradient(135deg, #7b5bd6 0%, #a189ec 100%);
+}
+
 .info {
   flex: 1;
   margin-left: 24rpx;
@@ -88,20 +92,6 @@
   color: #2b2440;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.sharedBadge {
-  flex-shrink: 0;
-  margin-left: 16rpx;
-  padding: 2rpx 12rpx;
-  border-radius: 999rpx;
-  background: rgba(255, 143, 168, 0.12);
-}
-
-.sharedText {
-  font-size: 22rpx;
-  color: #ff8fa8;
   white-space: nowrap;
 }
 
@@ -139,41 +129,6 @@
   margin-left: 20rpx;
   font-size: 24rpx;
   color: #f53f3f;
-}
-
-.shareRow {
-  display: flex;
-  align-items: center;
-}
-
-.shareLabel {
-  margin-right: 8rpx;
-  font-size: 22rpx;
-  color: #9c95b0;
-}
-
-.switchTrack {
-  width: 84rpx;
-  height: 46rpx;
-  padding: 3rpx;
-  border-radius: 999rpx;
-  background: #ede8f7;
-  display: flex;
-  align-items: center;
-  transition: all 0.25s ease;
-}
-
-.switchOn {
-  background: #7b5bd6;
-  justify-content: flex-end;
-}
-
-.switchDot {
-  width: 40rpx;
-  height: 40rpx;
-  border-radius: 999rpx;
-  background: #ffffff;
-  box-shadow: 0 2rpx 6rpx rgba(43, 36, 64, 0.2);
 }
 
 .tipCard {

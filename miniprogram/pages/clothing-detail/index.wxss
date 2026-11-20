@@ -64,6 +64,20 @@
   color: #9c95b0;
 }
 
+.syncTip {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 12rpx;
+  padding: 4rpx 16rpx;
+  border-radius: 999rpx;
+  background: #fdf3e6;
+}
+
+.syncTipText {
+  font-size: 22rpx;
+  color: #b7791f;
+}
+
 .chips {
   display: flex;
   flex-wrap: wrap;

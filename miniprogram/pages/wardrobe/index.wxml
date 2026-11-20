@@ -28,7 +28,8 @@
         data-id="{{item.id}}"
         bindtap="selectCabinet"
       >
-        <image class="cabinetCover" src="{{item.cover}}" mode="aspectFill" />
+        <image class="cabinetCover" wx:if="{{item.cover}}" src="{{item.cover}}" mode="aspectFill" />
+        <view class="cabinetCover cabinetCoverDefault" wx:else></view>
         <view class="cabinetMask"></view>
         <view class="cabinetContent">
           <text class="cabinetTitle">{{item.name}}</text>
@@ -79,11 +80,15 @@
   <empty-state
     wx:elif="{{items.length === 0}}"
     emoji="🪄"
-    title="衣橱还空着"
-    description="拍下你的第一件单品，开始施展收纳魔法"
+    title="衣橱还是空的"
+    description="拍下第一件衣服，开始建立你的数字衣橱。"
     action-text="添加第一件单品"
     bind:action="goAdd"
   />
+
+  <view class="sampleBtn" wx:if="{{items.length === 0}}" bindtap="handleLoadSample">
+    <text class="sampleBtnText">载入示例数据</text>
+  </view>
 
   <empty-state
     wx:else

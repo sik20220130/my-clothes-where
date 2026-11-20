@@ -11,13 +11,11 @@
 
   <view class="list">
     <view class="card" wx:for="{{wardrobes}}" wx:key="id">
-      <image class="cover" src="{{item.cover}}" mode="aspectFill" />
+      <image class="cover" wx:if="{{item.cover}}" src="{{item.cover}}" mode="aspectFill" />
+      <view class="cover coverDefault" wx:else></view>
       <view class="info">
         <view class="nameRow">
-          <text class="name">{{item.name}}</text>
-          <view class="sharedBadge" wx:if="{{item.isShared}}">
-            <text class="sharedText">家庭共享</text>
-          </view>
+          <text class="name">{{item.displayName}}</text>
         </view>
         <text class="meta">{{item.location}} · {{item.count}} 件单品</text>
         <view class="cardBottom">
@@ -27,21 +25,10 @@
             <text
               class="deleteText"
               data-id="{{item.id}}"
-              data-name="{{item.name}}"
+              data-name="{{item.displayName}}"
               data-count="{{item.count}}"
               bindtap="handleDelete"
             >删除</text>
-          </view>
-          <view
-            class="shareRow"
-            data-id="{{item.id}}"
-            data-name="{{item.name}}"
-            bindtap="handleToggleShare"
-          >
-            <text class="shareLabel">共享</text>
-            <view class="switchTrack {{item.isShared ? 'switchOn' : ''}}">
-              <view class="switchDot"></view>
-            </view>
           </view>
         </view>
       </view>
@@ -53,7 +40,6 @@
     <view class="tipText">
       <text class="tipLine">1. 衣橱照片支持拍照上传，真实还原家里的收纳空间</text>
       <text class="tipLine">2. 在单品详情页点击「转移衣橱」，即可把衣物移动到其他衣橱</text>
-      <text class="tipLine">3. 开启家庭共享后，家人可以一起查看与整理</text>
     </view>
   </view>
 </view>

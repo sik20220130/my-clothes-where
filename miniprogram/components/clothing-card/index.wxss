@@ -102,3 +102,18 @@
 
 .fav-icon{color:#c4bed3;font-size:34rpx;line-height:1;}
 .fav-icon-active{color:#ff6f91;}
+
+.syncBadge {
+  position: absolute;
+  left: 16rpx;
+  bottom: 16rpx;
+  padding: 4rpx 14rpx;
+  border-radius: 999rpx;
+  background: rgba(43, 36, 64, 0.72);
+}
+
+.syncBadgeText {
+  font-size: 20rpx;
+  color: #ffffff;
+  white-space: nowrap;
+}

@@ -12,19 +12,35 @@
   </view>
 
   <view class="group">
-    <view class="row" bindtap="handleReset">
-      <view class="rowIconWrap"><text class="rowIcon">🔄</text></view>
+    <view class="row" bindtap="handleOnboarding">
+      <view class="rowIconWrap"><view class="rowIcon mw-icon mw-icon-sparkle"></view></view>
       <view class="rowText">
-        <text class="rowTitle">恢复示例数据</text>
-        <text class="rowDesc">重置为内置的演示衣橱与单品</text>
+        <text class="rowTitle">新手引导</text>
+        <text class="rowDesc">重看 4 张功能教学卡片</text>
       </view>
       <text class="rowArrow">›</text>
     </view>
-    <view class="row rowLast" bindtap="handleClear">
-      <view class="rowIconWrap"><text class="rowIcon">🧹</text></view>
+    <view class="row" bindtap="handlePrivacy">
+      <view class="rowIconWrap"><view class="rowIcon mw-icon mw-icon-info"></view></view>
+      <view class="rowText">
+        <text class="rowTitle">隐私保护指引</text>
+        <text class="rowDesc">查看相册、摄像头等信息的授权说明</text>
+      </view>
+      <text class="rowArrow">›</text>
+    </view>
+    <view class="row" bindtap="handleClear">
+      <view class="rowIconWrap"><view class="rowIcon mw-icon mw-icon-trash"></view></view>
       <view class="rowText">
         <text class="rowTitle">清空单品与搭配</text>
         <text class="rowDesc">保留衣橱与家庭成员</text>
+      </view>
+      <text class="rowArrow">›</text>
+    </view>
+    <view class="row rowLast" bindtap="handleDeleteAll">
+      <view class="rowIconWrap"><view class="rowIcon mw-icon mw-icon-trash"></view></view>
+      <view class="rowText">
+        <text class="rowTitle rowTitleDanger">删除全部数据</text>
+        <text class="rowDesc">清除本地、云端记录与云存储图片</text>
       </view>
       <text class="rowArrow">›</text>
     </view>
@@ -32,7 +48,7 @@
 
   <view class="group">
     <view class="row rowLast" bindtap="handleAbout">
-      <view class="rowIconWrap"><text class="rowIcon">✨</text></view>
+      <view class="rowIconWrap"><view class="rowIcon mw-icon mw-icon-info"></view></view>
       <view class="rowText">
         <text class="rowTitle">关于小程序</text>
         <text class="rowDesc">版本信息与功能说明</text>
@@ -41,5 +57,5 @@
     </view>
   </view>
 
-  <text class="footer">数据保存在本机，接入微信云开发后可多端同步</text>
+  <text class="footer">数据已通过微信云开发同步，换设备登录也能看到你的衣橱</text>
 </view>

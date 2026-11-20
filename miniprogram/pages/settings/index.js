@@ -21,18 +21,44 @@ Page({
     });
   },
 
-  handleReset() {
+  handleOnboarding() {
+    wx.navigateTo({ url: '/pages/onboarding/index?preview=1' });
+  },
+
+  handlePrivacy() {
+    if (!wx.openPrivacyContract) {
+      wx.showToast({ title: '当前版本暂不支持查看协议', icon: 'none' });
+      return;
+    }
+    wx.openPrivacyContract({
+      fail() {
+        wx.showToast({ title: '暂时无法打开协议，请稍后再试', icon: 'none' });
+      }
+    });
+  },
+
+  handleDeleteAll() {
     const that = this;
     wx.showModal({
-      title: '恢复示例数据',
-      content: '将用内置示例数据覆盖当前衣橱内容，确定继续吗？',
-      confirmText: '恢复',
-      confirmColor: '#7b5bd6',
+      title: '删除全部数据',
+      content: '将删除本机缓存、云端记录与云存储图片，且无法恢复。确定继续吗？',
+      confirmText: '全部删除',
+      confirmColor: '#f53f3f',
       success(res) {
         if (!res.confirm) return;
-        store.resetData();
-        that.refresh();
-        wx.showToast({ title: '已恢复示例数据', icon: 'none' });
+        wx.showLoading({ title: '正在删除', mask: true });
+        store
+          .clearAll()
+          .then(() => {
+            wx.hideLoading();
+            that.refresh();
+            wx.showToast({ title: '数据已全部删除', icon: 'none' });
+          })
+          .catch((error) => {
+            console.error('[Settings] 删除全部数据失败:', error);
+            wx.hideLoading();
+            wx.showToast({ title: '删除失败，请稍后再试', icon: 'none' });
+          });
       }
     });
   },
@@ -57,7 +83,7 @@ Page({
     wx.showModal({
       title: '关于我的衣服在哪',
       content:
-        '我的衣服在哪（简称：衣服在哪）v1.0.0\n衣物收纳、喜欢优先、多衣橱管理与家庭共享，让找衣服更轻松。',
+        '我的衣服在哪（简称：衣服在哪）v1.0.0\n衣物收纳、搭配记录与多衣橱管理，让找衣服更轻松。',
       showCancel: false,
       confirmText: '知道啦'
     });
