@@ -1,8 +1,8 @@
 Component({
   properties: {
-    emoji: {
+    illustration: {
       type: String,
-      value: '✨'
+      value: ''
     },
     title: {
       type: String,

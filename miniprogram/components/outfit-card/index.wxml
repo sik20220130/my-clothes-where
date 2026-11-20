@@ -4,7 +4,10 @@
     <view class="mask"></view>
     <view class="cover-bottom">
       <text class="scene">{{sceneText}}</text>
-      <text class="likes">♥ {{outfit.likes}}</text>
+      <view class="likes">
+        <view class="likesIcon mw-icon mw-icon-heart-fill"></view>
+        <text class="likesText">{{outfit.likes}}</text>
+      </view>
     </view>
   </view>
   <view class="info">

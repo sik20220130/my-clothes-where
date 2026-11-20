@@ -229,6 +229,7 @@
 .quickIcon {
   width: 44rpx;
   height: 44rpx;
+  color: #7b5bd6;
 }
 
 .quickLabel {

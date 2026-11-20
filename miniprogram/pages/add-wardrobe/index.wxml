@@ -10,10 +10,12 @@
     </view>
     <view class="photoActions">
       <view class="photoBtn" data-source="camera" bindtap="chooseImage">
-        <text class="photoBtnText">📷 拍照</text>
+        <view class="photoBtnIcon mw-icon mw-icon-camera"></view>
+        <text class="photoBtnText">拍照</text>
       </view>
       <view class="photoBtn" data-source="album" bindtap="chooseImage">
-        <text class="photoBtnText">🖼 从相册选择</text>
+        <view class="photoBtnIcon mw-icon mw-icon-image"></view>
+        <text class="photoBtnText">从相册选择</text>
       </view>
     </view>
   </view>

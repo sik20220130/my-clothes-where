@@ -2,11 +2,11 @@ const store = require('../../utils/store');
 const { formatYMD } = require('../../utils/date');
 
 const SLOTS = [
-  { key: 'top', label: '上装', emoji: '👕', categories: ['top', 'dress'] },
-  { key: 'bottom', label: '下装', emoji: '👖', categories: ['bottom'] },
-  { key: 'outer', label: '外套', emoji: '🧥', categories: ['outer'] },
-  { key: 'shoes', label: '鞋履', emoji: '👟', categories: ['shoes'] },
-  { key: 'extra', label: '饰品', emoji: '💍', categories: ['bag', 'accessory'] }
+  { key: 'top', label: '上装', icon: 'top', categories: ['top', 'dress'] },
+  { key: 'bottom', label: '下装', icon: 'bottom', categories: ['bottom'] },
+  { key: 'outer', label: '外套', icon: 'outer', categories: ['outer'] },
+  { key: 'shoes', label: '鞋履', icon: 'shoes', categories: ['shoes'] },
+  { key: 'extra', label: '饰品', icon: 'accessory', categories: ['bag', 'accessory'] }
 ];
 
 Page({
@@ -54,7 +54,7 @@ Page({
       return {
         key: slot.key,
         label: slot.label,
-        emoji: slot.emoji,
+        icon: slot.icon,
         image: item ? item.image : ''
       };
     });

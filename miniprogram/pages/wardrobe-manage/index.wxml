@@ -1,9 +1,6 @@
 <view class="page">
   <view class="header">
-    <view>
-      <text class="title">衣橱管理</text>
-      <text class="subtitle">共 {{wardrobes.length}} 个衣橱 · 晒出你的收纳魔法</text>
-    </view>
+    <text class="headerStat">共 {{wardrobes.length}} 个衣橱</text>
     <view class="addBtn" bindtap="goAdd">
       <text class="addBtnText">+ 添加衣橱</text>
     </view>
@@ -12,7 +9,7 @@
   <view class="list">
     <view class="card" wx:for="{{wardrobes}}" wx:key="id">
       <image class="cover" wx:if="{{item.cover}}" src="{{item.cover}}" mode="aspectFill" />
-      <view class="cover coverDefault" wx:else></view>
+      <image class="cover" wx:else src="/assets/wardrobe/default-cover.png" mode="aspectFill" />
       <view class="info">
         <view class="nameRow">
           <text class="name">{{item.displayName}}</text>

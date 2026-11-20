@@ -65,7 +65,7 @@
 
     <empty-state
       wx:if="{{isEmpty}}"
-      emoji="🪄"
+      illustration="home-empty"
       title="欢迎来到你的数字衣橱"
       description="先添加几件衣服，首页会显示本月新增与常用入口。"
       action-text="开始添加"

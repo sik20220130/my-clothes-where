@@ -59,8 +59,9 @@
 }
 
 .fav-icon {
-  font-size: 30rpx;
-  line-height: 1;
+  width: 30rpx;
+  height: 30rpx;
+  color: #9c95b0;
 }
 
 .info {
@@ -100,8 +101,7 @@
   white-space: nowrap;
 }
 
-.fav-icon{color:#c4bed3;font-size:34rpx;line-height:1;}
-.fav-icon-active{color:#ff6f91;}
+.fav-icon-active{color:#7b5bd6;}
 
 .syncBadge {
   position: absolute;

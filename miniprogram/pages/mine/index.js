@@ -1,6 +1,6 @@
 const store = require('../../utils/store');
 
-const AVATAR = 'https://picsum.photos/id/64/200/200';
+const AVATAR = '/assets/avatar/default.png';
 
 const MENU_LIST = [
   { key: 'favorites', icon: 'heart', label: '我喜欢的单品', desc: '喜欢的衣物在衣橱里优先展示' },

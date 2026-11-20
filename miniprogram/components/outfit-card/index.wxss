@@ -59,6 +59,18 @@
 }
 
 .likes {
+  display: flex;
+  align-items: center;
+}
+
+.likesIcon {
+  width: 22rpx;
+  height: 22rpx;
+  margin-right: 6rpx;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.likesText {
   font-size: 22rpx;
   color: rgba(255, 255, 255, 0.92);
 }

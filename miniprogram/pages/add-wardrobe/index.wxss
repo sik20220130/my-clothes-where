@@ -52,7 +52,7 @@
   width: 96rpx;
   height: 96rpx;
   opacity: 0.9;
-  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjEuOSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTIgM2EyIDIgMCAxIDEgMiAyYzAgLjgtLjUgMS40LTEuMSAxLjdsLS45LjV2MS42TDMuNiAxNGExLjYgMS42IDAgMCAwIC44IDNoMTUuMmExLjYgMS42IDAgMCAwIC44LTNMMTIgOC44Ii8+PC9zdmc+");
+  color: #ffffff;
 }
 
 .imageDefaultText {
@@ -83,6 +83,13 @@
 .photoBtn:active {
   opacity: 0.85;
   transform: scale(0.98);
+}
+
+.photoBtnIcon {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 8rpx;
+  color: #7b5bd6;
 }
 
 .photoBtnText {

@@ -1,7 +1,7 @@
 const store = require('../../utils/store');
 
 const INVITE_CODE = 'MAGIC-2026';
-const DEFAULT_AVATAR = 'https://picsum.photos/id/1025/200/200';
+const DEFAULT_AVATAR = '/assets/avatar/default.png';
 
 Page({
   data: {

@@ -56,7 +56,7 @@ Page({
       outfit: {
         id: look.id,
         title: look.name,
-        cover: firstImage ? firstImage.image : 'https://picsum.photos/id/103/720/900',
+        cover: firstImage ? firstImage.image : '/assets/demo/outfit-cover.png',
         author: '我的搭配',
         tags: [],
         description: `这套搭配收录了 ${validCount} 件单品，创建于 ${look.createdAt}。`,

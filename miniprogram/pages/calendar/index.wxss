@@ -108,7 +108,8 @@
 }
 
 .itemFav {
+  width: 28rpx;
+  height: 28rpx;
   margin-left: 12rpx;
-  font-size: 28rpx;
-  color: #ff8fa8;
+  color: #7b5bd6;
 }

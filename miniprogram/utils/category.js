@@ -11,21 +11,21 @@ const CATEGORY_LIST = [
 ];
 
 const CATEGORY_META = {
-  top: { label: '上衣', emoji: '👕' },
-  bottom: { label: '裤装', emoji: '👖' },
-  dress: { label: '裙装', emoji: '👗' },
-  outer: { label: '外套', emoji: '🧥' },
-  shoes: { label: '鞋履', emoji: '👟' },
-  bag: { label: '包袋', emoji: '👜' },
-  accessory: { label: '配饰', emoji: '💍' }
+  top: { label: '上衣', icon: 'top' },
+  bottom: { label: '裤装', icon: 'bottom' },
+  dress: { label: '裙装', icon: 'dress' },
+  outer: { label: '外套', icon: 'outer' },
+  shoes: { label: '鞋履', icon: 'shoes' },
+  bag: { label: '包袋', icon: 'bag' },
+  accessory: { label: '配饰', icon: 'accessory' }
 };
 
 const SCENE_META = {
-  work: { label: '通勤', emoji: '💼' },
-  date: { label: '约会', emoji: '💕' },
-  casual: { label: '休闲', emoji: '☕' },
-  travel: { label: '度假', emoji: '🏖️' },
-  sport: { label: '运动', emoji: '🏃' }
+  work: { label: '通勤' },
+  date: { label: '约会' },
+  casual: { label: '休闲' },
+  travel: { label: '度假' },
+  sport: { label: '运动' }
 };
 
 const SCENE_LIST = [

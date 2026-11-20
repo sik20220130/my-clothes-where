@@ -5,7 +5,7 @@
       <text class="badge-text">{{categoryLabel}}</text>
     </view>
     <view class="fav-btn" catchtap="handleFavorite">
-      <text class="fav-icon {{item.favorite ? 'fav-icon-active' : ''}}">{{item.favorite ? '♥' : '♡'}}</text>
+      <view class="fav-icon mw-icon {{item.favorite ? 'mw-icon-heart-fill fav-icon-active' : 'mw-icon-heart'}}"></view>
     </view>
     <view class="syncBadge" wx:if="{{item.syncState === 'pending'}}">
       <text class="syncBadgeText">未同步</text>

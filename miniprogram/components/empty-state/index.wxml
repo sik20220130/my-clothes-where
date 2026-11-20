@@ -1,5 +1,7 @@
 <view class="empty">
-  <text class="emoji">{{emoji}}</text>
+  <view class="illustration" wx:if="{{illustration}}">
+    <view class="illustrationArt illustrationArt-{{illustration}}"></view>
+  </view>
   <text class="title">{{title}}</text>
   <text class="description" wx:if="{{description}}">{{description}}</text>
   <view class="action" wx:if="{{actionText}}" bindtap="handleAction">

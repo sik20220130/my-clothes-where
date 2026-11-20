@@ -1,7 +1,7 @@
 <view class="page">
   <view class="topBar" style="padding-top: {{statusBarHeight}}px;">
     <view class="cancelBtn" bindtap="handleCancel">
-      <text class="cancelIcon">✕</text>
+      <view class="cancelIcon mw-icon mw-icon-close"></view>
       <text class="cancelText">取消</text>
     </view>
     <text class="title">裁切</text>

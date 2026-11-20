@@ -3,13 +3,13 @@ const { CATEGORY_LIST, COLOR_OPTIONS, SEASON_LIST } = require('../../utils/categ
 const { formatYMD } = require('../../utils/date');
 
 const DEFAULT_IMAGES = {
-  top: 'https://picsum.photos/id/103/600/600',
-  bottom: 'https://picsum.photos/id/230/600/600',
-  dress: 'https://picsum.photos/id/119/720/900',
-  outer: 'https://picsum.photos/id/220/600/600',
-  shoes: 'https://picsum.photos/id/230/600/600',
-  bag: 'https://picsum.photos/id/250/600/600',
-  accessory: 'https://picsum.photos/id/103/600/600'
+  top: '/assets/demo/item-1.png',
+  bottom: '/assets/demo/item-2.png',
+  dress: '/assets/demo/item-3.png',
+  outer: '/assets/demo/item-4.png',
+  shoes: '/assets/demo/item-5.png',
+  bag: '/assets/demo/item-6.png',
+  accessory: '/assets/demo/item-1.png'
 };
 
 // 新建单品按当前月份单季预选：3-5 春、6-8 夏、9-11 秋、12-2 冬

@@ -1,7 +1,7 @@
 <view class="page">
   <block wx:if="{{notFound}}">
     <empty-state
-      emoji="🪄"
+      illustration="item-missing"
       title="单品不见了"
       description="这件单品可能已经被删除"
       action-text="返回衣橱"
@@ -17,7 +17,8 @@
         <view class="nameRow">
           <text class="name">{{item.name}}</text>
           <view class="categoryBadge">
-            <text class="categoryText">{{categoryEmoji}} {{categoryLabel}}</text>
+            <view class="categoryIcon mw-icon mw-icon-{{categoryIcon}}"></view>
+            <text class="categoryText">{{categoryLabel}}</text>
           </view>
         </view>
         <text class="brand">{{item.brand}}</text>
@@ -30,7 +31,7 @@
 
         <view class="infoRow">
           <view class="infoItem infoItemClickable" bindtap="toggleFavorite">
-            <text class="infoValue infoHeart {{favorite ? 'infoHeartActive' : ''}}">{{favorite ? '♥' : '♡'}}</text>
+            <view class="infoHeart mw-icon {{favorite ? 'mw-icon-heart-fill' : 'mw-icon-heart'}}"></view>
             <text class="infoLabel">{{favorite ? '已喜欢' : '标记喜欢'}}</text>
           </view>
           <view class="infoDivider"></view>
@@ -67,7 +68,8 @@
         <text class="ghostBtnText">转移</text>
       </view>
       <view class="primaryBtn" bindtap="toggleFavorite">
-        <text class="primaryBtnText">{{favorite ? '♥ 已喜欢' : '♡ 标记喜欢'}}</text>
+        <view class="primaryBtnIcon mw-icon {{favorite ? 'mw-icon-heart-fill' : 'mw-icon-heart'}}"></view>
+        <text class="primaryBtnText">{{favorite ? '已喜欢' : '标记喜欢'}}</text>
       </view>
     </view>
   </block>

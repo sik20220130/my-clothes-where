@@ -59,6 +59,7 @@
 .imageEmptyGlyph {
   width: 56rpx;
   height: 56rpx;
+  color: #7b5bd6;
 }
 
 .imageEmptyText {

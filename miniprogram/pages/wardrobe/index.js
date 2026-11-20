@@ -1,6 +1,5 @@
 const store = require('../../utils/store');
 const { CATEGORY_LIST } = require('../../utils/category');
-const { monthPrefix } = require('../../utils/date');
 
 Page({
   data: {
@@ -8,10 +7,10 @@ Page({
     wardrobes: [],
     cabinetCounts: {},
     filtered: [],
-    monthly: 0,
     keyword: '',
     activeCategory: 'all',
     activeCabinet: 'all',
+    favoriteOnly: false,
     hasFilter: false,
     categoryList: CATEGORY_LIST
   },
@@ -19,9 +18,14 @@ Page({
   onShow() {
     const app = getApp();
     const filter = app.globalData.wardrobeFilter;
-    if (filter) {
+    if (filter === '__favorite__') {
       app.globalData.wardrobeFilter = null;
-      this.setData({ activeCabinet: filter, keyword: '', activeCategory: 'all' });
+      this.setData({
+        favoriteOnly: true,
+        activeCabinet: 'all',
+        keyword: '',
+        activeCategory: 'all'
+      });
     }
     this.refresh();
   },
@@ -36,44 +40,40 @@ Page({
       cabinetCounts[item.wardrobeId] = (cabinetCounts[item.wardrobeId] || 0) + 1;
     });
 
-    const prefix = monthPrefix();
     const activeCabinet = this.data.activeCabinet;
     const cabinetExists = wardrobes.some((cabinet) => cabinet.id === activeCabinet);
     this.setData(
       {
         items,
         activeCabinet:
-          activeCabinet === 'all' || activeCabinet === '__favorite__' || cabinetExists
-            ? activeCabinet
-            : 'all',
+          activeCabinet === 'all' || cabinetExists ? activeCabinet : 'all',
         wardrobes: wardrobes.map((cabinet) =>
           Object.assign({}, cabinet, { count: cabinetCounts[cabinet.id] || 0 })
-        ),
-        monthly: items.filter((item) => item.addedAt.indexOf(prefix) === 0).length
+        )
       },
       () => this.applyFilter()
     );
   },
 
   applyFilter() {
-    const { items, keyword, activeCategory, activeCabinet } = this.data;
+    const { items, keyword, activeCategory, activeCabinet, favoriteOnly } = this.data;
     const kw = keyword.trim();
     const filtered = items.filter((item) => {
-      const matchCabinet =
-        activeCabinet === 'all' ||
-        (activeCabinet === '__favorite__' ? !!item.favorite : item.wardrobeId === activeCabinet);
+      const matchCabinet = activeCabinet === 'all' || item.wardrobeId === activeCabinet;
+      const matchFavorite = !favoriteOnly || !!item.favorite;
       const matchCategory = activeCategory === 'all' || item.category === activeCategory;
       const matchKeyword =
         !kw ||
         item.name.indexOf(kw) >= 0 ||
         item.color.indexOf(kw) >= 0 ||
         item.brand.indexOf(kw) >= 0;
-      return matchCabinet && matchCategory && matchKeyword;
+      return matchCabinet && matchFavorite && matchCategory && matchKeyword;
     });
 
     this.setData({
       filtered,
-      hasFilter: kw.length > 0 || activeCategory !== 'all' || activeCabinet !== 'all'
+      hasFilter:
+        kw.length > 0 || activeCategory !== 'all' || activeCabinet !== 'all' || favoriteOnly
     });
   },
 
@@ -89,9 +89,13 @@ Page({
     this.setData({ activeCategory: event.currentTarget.dataset.key }, () => this.applyFilter());
   },
 
+  toggleFavoriteFilter() {
+    this.setData({ favoriteOnly: !this.data.favoriteOnly }, () => this.applyFilter());
+  },
+
   resetFilter() {
     this.setData(
-      { keyword: '', activeCategory: 'all', activeCabinet: 'all' },
+      { keyword: '', activeCategory: 'all', activeCabinet: 'all', favoriteOnly: false },
       () => this.applyFilter()
     );
   },

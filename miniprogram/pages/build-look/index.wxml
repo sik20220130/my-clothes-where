@@ -1,7 +1,4 @@
 <view class="page">
-  <text class="title">搭配工坊</text>
-  <text class="subtitle">从上装、下装、外套、饰品中挑选单品，组合今日造型</text>
-
   <view class="boardCard">
     <view class="boardHeader">
       <text class="boardTitle">搭配画板</text>
@@ -16,7 +13,7 @@
           bindtap="handleSlotTap"
         >
           <image class="slotImage" wx:if="{{item.image}}" src="{{item.image}}" mode="aspectFill" />
-          <text class="slotEmoji" wx:else>{{item.emoji}}</text>
+          <view class="slotIcon mw-icon mw-icon-{{item.icon}}" wx:else></view>
         </view>
         <text class="slotLabel {{activeSlot === item.key ? 'slotLabelActive' : ''}}">{{item.label}}</text>
       </view>
@@ -39,7 +36,10 @@
       wx:key="key"
       data-key="{{item.key}}"
       bindtap="selectSlotTab"
-    >{{item.emoji}} {{item.label}}</view>
+    >
+      <view class="slotTabIcon mw-icon mw-icon-{{item.icon}}"></view>
+      <text class="slotTabText">{{item.label}}</text>
+    </view>
   </scroll-view>
 
   <view class="picker" wx:if="{{pickerItems.length > 0}}">
@@ -53,7 +53,7 @@
       <image class="pickerImage" src="{{item.image}}" mode="aspectFill" />
       <text class="pickerName">{{item.name}}</text>
       <view class="checkBadge" wx:if="{{item.active}}">
-        <text class="checkText">✓</text>
+        <view class="checkIcon mw-icon mw-icon-check"></view>
       </view>
     </view>
   </view>

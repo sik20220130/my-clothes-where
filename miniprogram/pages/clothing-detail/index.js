@@ -7,7 +7,7 @@ Page({
     notFound: false,
     item: null,
     categoryLabel: '',
-    categoryEmoji: '',
+    categoryIcon: '',
     cabinetName: '未分配',
     favorite: false
   },
@@ -34,7 +34,7 @@ Page({
       item,
       favorite: !!item.favorite,
       categoryLabel: meta ? meta.label : '',
-      categoryEmoji: meta ? meta.emoji : '',
+      categoryIcon: meta ? meta.icon : '',
       cabinetName: cabinet ? cabinet.name : '未分配'
     });
   },

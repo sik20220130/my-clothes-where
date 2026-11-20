@@ -1,7 +1,7 @@
 const store = require('../../utils/store');
 const { greeting, formatMD, weekLabel, monthPrefix } = require('../../utils/date');
 
-const AVATAR = 'https://picsum.photos/id/64/200/200';
+const AVATAR = '/assets/avatar/default.png';
 
 const QUICK_ENTRIES = [
   { key: 'add', icon: 'camera', label: '拍照收纳' },

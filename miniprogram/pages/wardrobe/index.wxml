@@ -1,12 +1,10 @@
 <view class="page">
   <view class="header">
-    <view class="titleRow">
-      <view>
-        <text class="title">我的衣橱</text>
-        <text class="subtitle">共 {{items.length}} 件单品 · {{wardrobes.length}} 个衣橱 · 本月新增 {{monthly}} 件</text>
-      </view>
+    <view class="statRow">
+      <text class="statText">{{filtered.length}} 件单品 · {{wardrobes.length}} 个衣橱</text>
       <view class="manage" bindtap="goManage">
         <text class="manageText">衣橱管理</text>
+        <text class="manageArrow">›</text>
       </view>
     </view>
 
@@ -29,7 +27,7 @@
         bindtap="selectCabinet"
       >
         <image class="cabinetCover" wx:if="{{item.cover}}" src="{{item.cover}}" mode="aspectFill" />
-        <view class="cabinetCover cabinetCoverDefault" wx:else></view>
+        <image class="cabinetCover" wx:else src="/assets/wardrobe/default-cover.png" mode="aspectFill" />
         <view class="cabinetMask"></view>
         <view class="cabinetContent">
           <text class="cabinetTitle">{{item.name}}</text>
@@ -48,6 +46,9 @@
         confirm-type="search"
         bindinput="handleSearch"
       />
+      <view class="favFilter {{favoriteOnly ? 'favFilterActive' : ''}}" catchtap="toggleFavoriteFilter">
+        <view class="favFilterIcon mw-icon {{favoriteOnly ? 'mw-icon-heart-fill' : 'mw-icon-heart'}}"></view>
+      </view>
     </view>
 
     <scroll-view class="chips" scroll-x>
@@ -62,7 +63,7 @@
   </view>
 
   <view class="summary">
-    <text class="summaryText" wx:if="{{activeCabinet === '__favorite__'}}">仅看喜欢的单品 · {{filtered.length}} 件</text>
+    <text class="summaryText" wx:if="{{favoriteOnly}}">仅看喜欢的单品 · {{filtered.length}} 件</text>
     <text class="summaryText" wx:else>{{filtered.length}} 件单品</text>
     <text class="clearText" wx:if="{{hasFilter}}" bindtap="resetFilter">清除筛选</text>
   </view>
@@ -77,27 +78,38 @@
     </view>
   </view>
 
-  <empty-state
-    wx:elif="{{items.length === 0}}"
-    emoji="🪄"
-    title="衣橱还是空的"
-    description="拍下第一件衣服，开始建立你的数字衣橱。"
-    action-text="添加第一件单品"
-    bind:action="goAdd"
-  />
+  <block wx:else>
+    <empty-state
+      wx:if="{{items.length === 0}}"
+      illustration="wardrobe-empty"
+      title="衣橱还是空的"
+      description="拍下第一件衣服，开始建立你的数字衣橱。"
+      action-text="添加第一件单品"
+      bind:action="goAdd"
+    />
 
-  <view class="sampleBtn" wx:if="{{items.length === 0}}" bindtap="handleLoadSample">
-    <text class="sampleBtnText">载入示例数据</text>
-  </view>
+    <empty-state
+      wx:elif="{{favoriteOnly}}"
+      illustration="search-empty"
+      title="还没有喜欢的单品"
+      description="在单品详情点爱心即可标记"
+      action-text="查看全部"
+      bind:action="resetFilter"
+    />
 
-  <empty-state
-    wx:else
-    emoji="🔎"
-    title="没有找到相关单品"
-    description="试试更换关键词、品类或衣橱筛选"
-    action-text="清除筛选"
-    bind:action="resetFilter"
-  />
+    <empty-state
+      wx:else
+      illustration="search-empty"
+      title="没有找到相关单品"
+      description="试试更换关键词、品类或衣橱筛选"
+      action-text="清除筛选"
+      bind:action="resetFilter"
+    />
+
+    <view class="sampleBtn" wx:if="{{items.length === 0}}" bindtap="handleLoadSample">
+      <text class="sampleBtnText">载入示例数据</text>
+    </view>
+  </block>
 
   <view class="fab" bindtap="goAdd">
     <text class="fabText">+</text>

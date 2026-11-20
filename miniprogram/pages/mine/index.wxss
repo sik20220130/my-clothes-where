@@ -108,6 +108,7 @@
 .menuIcon {
   width: 40rpx;
   height: 40rpx;
+  color: #7b5bd6;
 }
 
 .menuTextWrap {
