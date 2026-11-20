@@ -6,8 +6,8 @@ const MENU_LIST = [
   { key: 'favorites', emoji: '💖', label: '我喜欢的单品', desc: '喜欢的衣物在衣橱里优先展示' },
   { key: 'wardrobe', emoji: '👚', label: '衣橱管理', desc: '拍照上传、整理与转移单品' },
   { key: 'family', emoji: '👨‍👩‍👧', label: '家庭共享', desc: '一家人共享同一个衣橱' },
-  { key: 'calendar', emoji: '📅', label: '穿搭日历', desc: '记录每天的穿搭灵感' },
-  { key: 'settings', emoji: '⚙️', label: '设置', desc: '偏好、通知与隐私' }
+  { key: 'calendar', emoji: '📅', label: '穿搭日历', desc: '按收纳日期回顾你的衣橱' },
+  { key: 'settings', emoji: '⚙️', label: '设置', desc: '数据管理与关于' }
 ];
 
 Page({

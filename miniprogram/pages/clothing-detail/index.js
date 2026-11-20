@@ -61,7 +61,11 @@ Page({
       itemList: state.wardrobes.map((wardrobe) => wardrobe.name),
       success(res) {
         const target = state.wardrobes[res.tapIndex];
-        if (!target || target.id === item.wardrobeId) {
+        if (!target) {
+          return;
+        }
+        if (target.id === item.wardrobeId) {
+          wx.showToast({ title: '已经在这个衣橱里了', icon: 'none' });
           return;
         }
         store.moveItem(item.id, target.id);

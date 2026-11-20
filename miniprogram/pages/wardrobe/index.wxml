@@ -61,7 +61,8 @@
   </view>
 
   <view class="summary">
-    <text class="summaryText">{{filtered.length}} 件单品</text>
+    <text class="summaryText" wx:if="{{activeCabinet === '__favorite__'}}">仅看喜欢的单品 · {{filtered.length}} 件</text>
+    <text class="summaryText" wx:else>{{filtered.length}} 件单品</text>
     <text class="clearText" wx:if="{{hasFilter}}" bindtap="resetFilter">清除筛选</text>
   </view>
 

@@ -3,7 +3,7 @@
     <view class="topRow">
       <view class="greetWrap">
         <text class="greeting">{{greeting}}，欢迎回来</text>
-        <text class="subText">{{todayText}} · 上海 · 晴 18°C</text>
+        <text class="subText">{{todayText}} · 今天也要好好打扮</text>
       </view>
       <view class="avatarWrap" bindtap="goMine">
         <image class="avatar" src="{{avatar}}" mode="aspectFill" />

@@ -37,9 +37,15 @@ Page({
     });
 
     const prefix = monthPrefix();
+    const activeCabinet = this.data.activeCabinet;
+    const cabinetExists = wardrobes.some((cabinet) => cabinet.id === activeCabinet);
     this.setData(
       {
         items,
+        activeCabinet:
+          activeCabinet === 'all' || activeCabinet === '__favorite__' || cabinetExists
+            ? activeCabinet
+            : 'all',
         wardrobes: wardrobes.map((cabinet) =>
           Object.assign({}, cabinet, { count: cabinetCounts[cabinet.id] || 0 })
         ),

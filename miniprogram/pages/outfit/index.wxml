@@ -1,7 +1,7 @@
 <view class="page">
   <view class="header">
     <text class="title">搭配灵感</text>
-    <text class="subtitle">让魔镜为你生成今日造型</text>
+    <text class="subtitle">整理与收藏你的日常穿搭</text>
   </view>
 
   <view class="looksSection">

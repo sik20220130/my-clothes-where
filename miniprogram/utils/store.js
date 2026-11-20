@@ -178,17 +178,23 @@ function saveImage(tempFilePath) {
   if (!tempFilePath) {
     return Promise.resolve('');
   }
+  const userDataPath = (wx.env && wx.env.USER_DATA_PATH) || '';
   if (
     tempFilePath.indexOf('https://') === 0 ||
-    tempFilePath.indexOf(wx.env.USER_DATA_PATH) === 0
+    (userDataPath && tempFilePath.indexOf(userDataPath) === 0)
   ) {
+    return Promise.resolve(tempFilePath);
+  }
+  if (!userDataPath) {
     return Promise.resolve(tempFilePath);
   }
   return new Promise((resolve) => {
     const fs = wx.getFileSystemManager();
     const matched = tempFilePath.match(/\.[a-zA-Z0-9]+$/);
     const ext = matched ? matched[0] : '.jpg';
-    const filePath = `${wx.env.USER_DATA_PATH}/mw_${Date.now()}${ext}`;
+    const filePath = `${userDataPath}/mw_${Date.now()}_${Math.floor(
+      Math.random() * 1000
+    )}${ext}`;
     fs.saveFile({
       tempFilePath,
       filePath,
@@ -255,14 +261,15 @@ function removeLook(id) {
   save(data);
 }
 
-// 恢复内置示例数据
+// 恢复内置示例数据，保留当前家庭成员
 function resetData() {
+  const data = getData();
   save({
     items: defaultClothes,
     wardrobes: defaultWardrobes,
     looks: [],
     lookFavorites: [],
-    members: defaultMembers
+    members: data.members
   });
 }
 
