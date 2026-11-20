@@ -1,30 +1,114 @@
 .page {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0 32rpx;
-  background: linear-gradient(180deg, #f0eafa 0%, #f7f4fc 100%);
+  padding: 32rpx 32rpx 48rpx;
+  background: #f7f4fc;
 }
 
-.emoji {
-  font-size: 120rpx;
-  line-height: 1;
-  filter: drop-shadow(0 8rpx 16rpx rgba(123, 91, 214, 0.2));
+.header {
+  padding: 8rpx 8rpx 0;
 }
 
 .title {
-  margin-top: 32rpx;
-  font-size: 40rpx;
+  display: block;
+  font-size: 44rpx;
   font-weight: 700;
   color: #2b2440;
 }
 
-.hint {
-  margin-top: 16rpx;
-  font-size: 28rpx;
+.subtitle {
+  display: block;
+  margin-top: 8rpx;
+  font-size: 24rpx;
   color: #9c95b0;
 }
 
-.emoji{display:flex;align-items:center;justify-content:center;width:184rpx;height:184rpx;border-radius:52rpx;background:linear-gradient(135deg,#f6f0ff,#ffeaf1);box-shadow:inset 0 0 0 1rpx rgba(123,91,214,0.08);font-size:84rpx;line-height:1;}
+.group {
+  margin-top: 24rpx;
+  padding: 24rpx;
+  background: #ffffff;
+  border-radius: 20rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.08);
+}
+
+.dateRow {
+  display: flex;
+  align-items: center;
+}
+
+.dateDot {
+  width: 14rpx;
+  height: 14rpx;
+  border-radius: 999rpx;
+  background: #7b5bd6;
+  box-shadow: 0 0 0 6rpx rgba(123, 91, 214, 0.12);
+}
+
+.dateText {
+  margin-left: 16rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #2b2440;
+}
+
+.weekText {
+  margin-left: 12rpx;
+  font-size: 22rpx;
+  color: #9c95b0;
+}
+
+.countText {
+  margin-left: auto;
+  font-size: 22rpx;
+  color: #7b5bd6;
+}
+
+.items {
+  margin-top: 16rpx;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  padding: 16rpx 0;
+  border-top: 1rpx solid #f4f0fb;
+}
+
+.item:active {
+  opacity: 0.85;
+}
+
+.thumb {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 14rpx;
+  background: #f3eefb;
+  flex-shrink: 0;
+}
+
+.itemInfo {
+  flex: 1;
+  margin-left: 20rpx;
+  min-width: 0;
+}
+
+.itemName {
+  display: block;
+  font-size: 26rpx;
+  color: #2b2440;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.itemMeta {
+  display: block;
+  margin-top: 4rpx;
+  font-size: 22rpx;
+  color: #9c95b0;
+}
+
+.itemFav {
+  margin-left: 12rpx;
+  font-size: 28rpx;
+  color: #ff8fa8;
+}

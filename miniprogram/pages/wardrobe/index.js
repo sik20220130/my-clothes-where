@@ -17,6 +17,12 @@ Page({
   },
 
   onShow() {
+    const app = getApp();
+    const filter = app.globalData.wardrobeFilter;
+    if (filter) {
+      app.globalData.wardrobeFilter = null;
+      this.setData({ activeCabinet: filter, keyword: '', activeCategory: 'all' });
+    }
     this.refresh();
   },
 
@@ -47,7 +53,9 @@ Page({
     const { items, keyword, activeCategory, activeCabinet } = this.data;
     const kw = keyword.trim();
     const filtered = items.filter((item) => {
-      const matchCabinet = activeCabinet === 'all' || item.wardrobeId === activeCabinet;
+      const matchCabinet =
+        activeCabinet === 'all' ||
+        (activeCabinet === '__favorite__' ? !!item.favorite : item.wardrobeId === activeCabinet);
       const matchCategory = activeCategory === 'all' || item.category === activeCategory;
       const matchKeyword =
         !kw ||

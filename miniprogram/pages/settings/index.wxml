@@ -1,5 +1,45 @@
 <view class="page">
-  <text class="emoji">⚙️</text>
-  <text class="title">设置</text>
-  <text class="hint">功能正在开发中...</text>
+  <view class="header">
+    <text class="title">设置</text>
+    <text class="subtitle">我的衣服在哪 · v1.0.0</text>
+  </view>
+
+  <view class="statsCard">
+    <view class="statItem" wx:for="{{stats}}" wx:key="label">
+      <text class="statValue">{{item.value}}</text>
+      <text class="statLabel">{{item.label}}</text>
+    </view>
+  </view>
+
+  <view class="group">
+    <view class="row" bindtap="handleReset">
+      <view class="rowIconWrap"><text class="rowIcon">🔄</text></view>
+      <view class="rowText">
+        <text class="rowTitle">恢复示例数据</text>
+        <text class="rowDesc">重置为内置的演示衣橱与单品</text>
+      </view>
+      <text class="rowArrow">›</text>
+    </view>
+    <view class="row rowLast" bindtap="handleClear">
+      <view class="rowIconWrap"><text class="rowIcon">🧹</text></view>
+      <view class="rowText">
+        <text class="rowTitle">清空单品与搭配</text>
+        <text class="rowDesc">保留衣橱与家庭成员</text>
+      </view>
+      <text class="rowArrow">›</text>
+    </view>
+  </view>
+
+  <view class="group">
+    <view class="row rowLast" bindtap="handleAbout">
+      <view class="rowIconWrap"><text class="rowIcon">✨</text></view>
+      <view class="rowText">
+        <text class="rowTitle">关于小程序</text>
+        <text class="rowDesc">版本信息与功能说明</text>
+      </view>
+      <text class="rowArrow">›</text>
+    </view>
+  </view>
+
+  <text class="footer">数据保存在本机，接入微信云开发后可多端同步</text>
 </view>

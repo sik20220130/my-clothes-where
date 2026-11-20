@@ -2,6 +2,8 @@ const store = require('./utils/store');
 
 App({
   globalData: {
+    // 衣橱管理页跳转衣橱列表时携带的筛选条件
+    wardrobeFilter: null,
     // 预留：切换微信云开发时，在此处初始化云环境
     // wx.cloud.init({ env: 'your-env-id', traceUser: true })
     cloudEnabled: false

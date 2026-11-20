@@ -14,7 +14,13 @@
         <text class="createIcon">＋</text>
         <text class="createText">新建搭配</text>
       </view>
-      <view class="lookCard" wx:for="{{lookCards}}" wx:key="id">
+      <view
+        class="lookCard"
+        wx:for="{{lookCards}}"
+        wx:key="id"
+        data-id="{{item.id}}"
+        bindtap="goLook"
+      >
         <view class="lookImages">
           <image
             class="lookImage"
@@ -27,7 +33,7 @@
         </view>
         <view class="lookFooter">
           <text class="lookName">{{item.name}}</text>
-          <text class="lookDelete" data-id="{{item.id}}" data-name="{{item.name}}" bindtap="handleRemoveLook">删除</text>
+          <text class="lookDelete" data-id="{{item.id}}" data-name="{{item.name}}" catchtap="handleRemoveLook">删除</text>
         </view>
       </view>
     </scroll-view>

@@ -124,6 +124,23 @@
   color: #7b5bd6;
 }
 
+.actions {
+  display: flex;
+  align-items: center;
+}
+
+.editText {
+  margin-left: 20rpx;
+  font-size: 24rpx;
+  color: #6b6480;
+}
+
+.deleteText {
+  margin-left: 20rpx;
+  font-size: 24rpx;
+  color: #f53f3f;
+}
+
 .shareRow {
   display: flex;
   align-items: center;

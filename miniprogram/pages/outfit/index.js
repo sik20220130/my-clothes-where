@@ -76,6 +76,11 @@ Page({
     wx.navigateTo({ url: `/pages/outfit-detail/index?id=${outfit.id}` });
   },
 
+  goLook(event) {
+    const { id } = event.currentTarget.dataset;
+    wx.navigateTo({ url: `/pages/outfit-detail/index?id=${id}` });
+  },
+
   goBuildLook() {
     wx.navigateTo({ url: '/pages/build-look/index' });
   },

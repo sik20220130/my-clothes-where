@@ -115,6 +115,12 @@
   white-space: nowrap;
 }
 
+.memberRemove {
+  margin-top: 4rpx;
+  font-size: 20rpx;
+  color: #f53f3f;
+}
+
 .cabinetCard {
   display: flex;
   align-items: center;

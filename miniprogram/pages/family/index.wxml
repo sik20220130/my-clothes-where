@@ -20,6 +20,13 @@
         <image class="memberAvatar" src="{{item.avatar}}" mode="aspectFill" />
         <text class="memberName">{{item.name}}</text>
         <text class="memberRole">{{item.role}}</text>
+        <text
+          class="memberRemove"
+          wx:if="{{index > 0}}"
+          data-id="{{item.id}}"
+          data-name="{{item.name}}"
+          bindtap="handleRemove"
+        >移除</text>
       </view>
     </view>
   </view>
@@ -43,8 +50,8 @@
   </view>
 
   <view class="noteCard">
-    <text class="noteTitle">演示版说明</text>
-    <text class="noteText">当前 Demo 使用本地数据模拟家庭共享。接入微信云开发后，家人通过邀请码加入同一家庭，衣橱与单品将实时同步，支持多端查看与协作整理。</text>
+    <text class="noteTitle">家庭协作说明</text>
+    <text class="noteText">当前 Demo 使用本地数据模拟家庭共享，邀请与移除成员会保存在本机。接入微信云开发后，家人通过邀请码加入同一家庭，衣橱与单品将实时同步，支持多端查看与协作整理。</text>
   </view>
 
   <view class="inviteBtn" bindtap="handleInvite">

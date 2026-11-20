@@ -144,28 +144,30 @@ Page({
 
     const color = COLOR_OPTIONS[colorIndex];
     const editingItem = this.editingItem;
-    const payload = {
-      id: editingItem ? editingItem.id : `c-${Date.now()}`,
-      name: name.trim(),
-      category,
-      color: color.name,
-      colorHex: color.hex,
-      seasons: seasons.length > 0 ? seasons : ['四季'],
-      image: image || DEFAULT_IMAGES[category],
-      brand: brand.trim() || '未填写',
-      favorite: editingItem ? !!editingItem.favorite : false,
-      addedAt: editingItem ? editingItem.addedAt : formatYMD(),
-      wardrobeId: wardrobeId || (wardrobes[0] ? wardrobes[0].id : ''),
-      note: note.trim() || undefined
-    };
+    store.saveImage(image).then((savedImage) => {
+      const payload = {
+        id: editingItem ? editingItem.id : `c-${Date.now()}`,
+        name: name.trim(),
+        category,
+        color: color.name,
+        colorHex: color.hex,
+        seasons: seasons.length > 0 ? seasons : ['四季'],
+        image: savedImage || DEFAULT_IMAGES[category],
+        brand: brand.trim() || '未填写',
+        favorite: editingItem ? !!editingItem.favorite : false,
+        addedAt: editingItem ? editingItem.addedAt : formatYMD(),
+        wardrobeId: wardrobeId || (wardrobes[0] ? wardrobes[0].id : ''),
+        note: note.trim() || undefined
+      };
 
-    if (editingItem) {
-      store.updateItem(payload);
-      wx.showToast({ title: '修改已保存', icon: 'success', duration: 800 });
-    } else {
-      store.addItem(payload);
-      wx.showToast({ title: '已加入衣橱', icon: 'success', duration: 800 });
-    }
-    setTimeout(() => wx.navigateBack(), 800);
+      if (editingItem) {
+        store.updateItem(payload);
+        wx.showToast({ title: '修改已保存', icon: 'success', duration: 800 });
+      } else {
+        store.addItem(payload);
+        wx.showToast({ title: '已加入衣橱', icon: 'success', duration: 800 });
+      }
+      setTimeout(() => wx.navigateBack(), 800);
+    });
   }
 });

@@ -4,10 +4,28 @@ const DEFAULT_COVER = 'https://picsum.photos/id/582/750/400';
 
 Page({
   data: {
+    id: '',
+    isEdit: false,
     cover: '',
     name: '',
     location: '',
     isShared: false
+  },
+
+  onLoad(options) {
+    const id = options && options.id;
+    if (!id) return;
+    const cabinet = store.getCabinet(id);
+    if (!cabinet) return;
+    this.setData({
+      id: cabinet.id,
+      isEdit: true,
+      cover: cabinet.cover,
+      name: cabinet.name,
+      location: cabinet.location,
+      isShared: !!cabinet.isShared
+    });
+    wx.setNavigationBarTitle({ title: '编辑衣橱' });
   },
 
   chooseImage(event) {
@@ -42,19 +60,31 @@ Page({
   },
 
   handleSave() {
-    const { cover, name, location, isShared } = this.data;
+    const { id, isEdit, cover, name, location, isShared } = this.data;
     if (!name.trim()) {
       wx.showToast({ title: '请填写衣橱名称', icon: 'none' });
       return;
     }
-    store.addCabinet({
-      id: `w-${Date.now()}`,
+    const cabinet = {
+      id: id || `w-${Date.now()}`,
       name: name.trim(),
       location: location.trim() || '未填写位置',
       cover: cover || DEFAULT_COVER,
       isShared
+    };
+    store.saveImage(cover).then((savedCover) => {
+      cabinet.cover = savedCover || DEFAULT_COVER;
+      if (isEdit) {
+        store.updateCabinet(cabinet);
+      } else {
+        store.addCabinet(cabinet);
+      }
+      wx.showToast({
+        title: isEdit ? '衣橱已更新' : '衣橱已添加',
+        icon: 'success',
+        duration: 800
+      });
+      setTimeout(() => wx.navigateBack(), 800);
     });
-    wx.showToast({ title: '衣橱已添加', icon: 'success', duration: 800 });
-    setTimeout(() => wx.navigateBack(), 800);
   }
 });

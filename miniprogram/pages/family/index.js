@@ -1,12 +1,12 @@
 const store = require('../../utils/store');
-const { familyMembers } = require('../../data/family');
 
 const INVITE_CODE = 'MAGIC-2026';
+const DEFAULT_AVATAR = 'https://picsum.photos/id/1025/200/200';
 
 Page({
   data: {
     inviteCode: INVITE_CODE,
-    members: familyMembers,
+    members: [],
     wardrobes: [],
     counts: {},
     sharedCount: 0
@@ -23,6 +23,7 @@ Page({
       counts[item.wardrobeId] = (counts[item.wardrobeId] || 0) + 1;
     });
     this.setData({
+      members: store.getMembers(),
       wardrobes: state.wardrobes.map((cabinet) =>
         Object.assign({}, cabinet, { count: counts[cabinet.id] || 0 })
       ),
@@ -46,12 +47,46 @@ Page({
     const that = this;
     wx.showModal({
       title: '邀请家人',
-      content: `把邀请码 ${INVITE_CODE} 发给家人，打开小程序即可加入共享衣橱。\n（演示版为本地模拟共享）`,
-      confirmText: '复制邀请码',
-      cancelText: '稍后',
+      editable: true,
+      placeholderText: '输入家人称呼，如：妈妈',
+      confirmText: '加入',
+      cancelText: '取消',
       success(res) {
-        if (res.confirm) {
-          that.handleCopy();
+        if (!res.confirm) return;
+        const name = (res.content || '').trim();
+        if (!name) {
+          wx.showToast({ title: '请填写家人称呼', icon: 'none' });
+          return;
+        }
+        store.addMember({
+          id: `f-${Date.now()}`,
+          name,
+          avatar: DEFAULT_AVATAR,
+          role: '家庭成员'
+        });
+        that.refresh();
+        wx.showToast({ title: '已加入家庭', icon: 'success' });
+      }
+    });
+  },
+
+  handleRemove(event) {
+    const { id, name } = event.currentTarget.dataset;
+    if (store.getMembers().length <= 1) {
+      wx.showToast({ title: '至少保留一位成员', icon: 'none' });
+      return;
+    }
+    const that = this;
+    wx.showModal({
+      title: '移除成员',
+      content: `确定将「${name}」移出家庭吗？`,
+      confirmText: '移除',
+      confirmColor: '#f53f3f',
+      success(res) {
+        if (!res.confirm) return;
+        if (store.removeMember(id)) {
+          that.refresh();
+          wx.showToast({ title: '已移除', icon: 'none' });
         }
       }
     });

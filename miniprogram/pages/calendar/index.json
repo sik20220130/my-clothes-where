@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "穿搭日历",
-  "usingComponents": {}
+  "usingComponents": {
+    "empty-state": "/components/empty-state/index"
+  }
 }

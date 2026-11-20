@@ -21,7 +21,17 @@
         </view>
         <text class="meta">{{item.location}} · {{item.count}} 件单品</text>
         <view class="cardBottom">
-          <text class="viewText" bindtap="goItems">查看单品 ›</text>
+          <view class="actions">
+            <text class="viewText" data-id="{{item.id}}" bindtap="goItems">查看单品 ›</text>
+            <text class="editText" data-id="{{item.id}}" bindtap="goEdit">编辑</text>
+            <text
+              class="deleteText"
+              data-id="{{item.id}}"
+              data-name="{{item.name}}"
+              data-count="{{item.count}}"
+              bindtap="handleDelete"
+            >删除</text>
+          </view>
           <view
             class="shareRow"
             data-id="{{item.id}}"

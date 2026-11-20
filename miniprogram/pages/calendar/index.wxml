@@ -1,5 +1,41 @@
 <view class="page">
-  <text class="emoji">📅</text>
-  <text class="title">穿搭日历</text>
-  <text class="hint">功能正在开发中...</text>
+  <view class="header">
+    <text class="title">穿搭日历</text>
+    <text class="subtitle">已收录 {{total}} 件单品的收纳时间线</text>
+  </view>
+
+  <view wx:if="{{groups.length}}">
+    <view class="group" wx:for="{{groups}}" wx:key="date">
+      <view class="dateRow">
+        <view class="dateDot"></view>
+        <text class="dateText">{{item.label}}</text>
+        <text class="weekText">{{item.week}}</text>
+        <text class="countText">{{item.items.length}} 件</text>
+      </view>
+      <view class="items">
+        <view
+          class="item"
+          wx:for="{{item.items}}"
+          wx:for-item="clothing"
+          wx:key="id"
+          data-id="{{clothing.id}}"
+          bindtap="goDetail"
+        >
+          <image class="thumb" src="{{clothing.image}}" mode="aspectFill" />
+          <view class="itemInfo">
+            <text class="itemName">{{clothing.name}}</text>
+            <text class="itemMeta">{{clothing.categoryLabel}} · {{clothing.color}}</text>
+          </view>
+          <text class="itemFav" wx:if="{{clothing.favorite}}">♥</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <empty-state
+    wx:else
+    emoji="📅"
+    title="还没有收纳记录"
+    description="添加单品后，这里会按日期形成你的衣橱时间线"
+  />
 </view>

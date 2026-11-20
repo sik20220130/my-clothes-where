@@ -56,7 +56,7 @@
 
   <view class="saveBar">
     <view class="saveBtn" bindtap="handleSave">
-      <text class="saveText">创建衣橱</text>
+      <text class="saveText">{{isEdit ? '保存修改' : '创建衣橱'}}</text>
     </view>
   </view>
 </view>

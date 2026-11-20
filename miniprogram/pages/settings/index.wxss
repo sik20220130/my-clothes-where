@@ -1,30 +1,124 @@
 .page {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0 32rpx;
-  background: linear-gradient(180deg, #f0eafa 0%, #f7f4fc 100%);
+  padding: 32rpx 32rpx 48rpx;
+  background: #f7f4fc;
 }
 
-.emoji {
-  font-size: 120rpx;
-  line-height: 1;
-  filter: drop-shadow(0 8rpx 16rpx rgba(123, 91, 214, 0.2));
+.header {
+  padding: 8rpx 8rpx 0;
 }
 
 .title {
-  margin-top: 32rpx;
-  font-size: 40rpx;
+  display: block;
+  font-size: 44rpx;
   font-weight: 700;
   color: #2b2440;
 }
 
-.hint {
-  margin-top: 16rpx;
-  font-size: 28rpx;
+.subtitle {
+  display: block;
+  margin-top: 8rpx;
+  font-size: 24rpx;
   color: #9c95b0;
 }
 
-.emoji{display:flex;align-items:center;justify-content:center;width:184rpx;height:184rpx;border-radius:52rpx;background:linear-gradient(135deg,#f6f0ff,#ffeaf1);box-shadow:inset 0 0 0 1rpx rgba(123,91,214,0.08);font-size:84rpx;line-height:1;}
+.statsCard {
+  display: flex;
+  margin-top: 24rpx;
+  padding: 28rpx 8rpx;
+  background: #ffffff;
+  border-radius: 20rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.08);
+}
+
+.statItem {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.statValue {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #7b5bd6;
+}
+
+.statLabel {
+  margin-top: 4rpx;
+  font-size: 22rpx;
+  color: #9c95b0;
+}
+
+.group {
+  margin-top: 24rpx;
+  background: #ffffff;
+  border-radius: 20rpx;
+  overflow: hidden;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.08);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  padding: 28rpx 24rpx;
+  border-bottom: 1rpx solid #f4f0fb;
+}
+
+.rowLast {
+  border-bottom: none;
+}
+
+.row:active {
+  background: #faf8ff;
+}
+
+.rowIconWrap {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 20rpx;
+  background: linear-gradient(135deg, #f6f0ff, #ffeaf1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 0 1rpx rgba(123, 91, 214, 0.08);
+  flex-shrink: 0;
+}
+
+.rowIcon {
+  font-size: 34rpx;
+  line-height: 1;
+}
+
+.rowText {
+  flex: 1;
+  margin-left: 20rpx;
+  min-width: 0;
+}
+
+.rowTitle {
+  display: block;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #2b2440;
+}
+
+.rowDesc {
+  display: block;
+  margin-top: 4rpx;
+  font-size: 22rpx;
+  color: #9c95b0;
+}
+
+.rowArrow {
+  font-size: 32rpx;
+  color: #c9c3d8;
+}
+
+.footer {
+  display: block;
+  margin-top: 32rpx;
+  text-align: center;
+  font-size: 22rpx;
+  color: #9c95b0;
+}

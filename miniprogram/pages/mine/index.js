@@ -35,6 +35,7 @@ Page({
   handleMenu(event) {
     const key = event.currentTarget.dataset.key;
     if (key === 'favorites') {
+      getApp().globalData.wardrobeFilter = '__favorite__';
       wx.switchTab({ url: '/pages/wardrobe/index' });
       return;
     }
